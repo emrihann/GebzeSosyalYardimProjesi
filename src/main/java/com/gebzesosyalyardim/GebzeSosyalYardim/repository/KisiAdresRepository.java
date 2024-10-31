@@ -4,13 +4,13 @@
  */
 package com.gebzesosyalyardim.GebzeSosyalYardim.repository;
 
-import com.gebzesosyalyardim.GebzeSosyalYardim.entities.KisiYakinlar;
+import com.gebzesosyalyardim.GebzeSosyalYardim.entities.KisiAdres;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
  * @author emirh
  */
-public interface KisiYakinlarRepository extends JpaRepository <KisiYakinlar, Integer> {
+public interface KisiAdresRepository extends JpaRepository <KisiAdres, Integer> {
     
 }
