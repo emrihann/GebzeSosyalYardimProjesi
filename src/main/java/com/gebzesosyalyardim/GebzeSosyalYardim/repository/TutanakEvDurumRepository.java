@@ -4,10 +4,15 @@
  */
 package com.gebzesosyalyardim.GebzeSosyalYardim.repository;
 
+import com.gebzesosyalyardim.GebzeSosyalYardim.entities.TutanakEvDurum;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
 /**
  *
  * @author emirh
  */
-public interface TutanakEvDurumRepository {
+@Repository
+public interface TutanakEvDurumRepository extends JpaRepository <TutanakEvDurum,Integer> {
     
 }
