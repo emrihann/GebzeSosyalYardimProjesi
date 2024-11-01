@@ -15,7 +15,7 @@ import java.util.Optional;
  */
 
 public interface KisiAdresService {
-      List<KisiAdres> getAllKisiAdres();
+    List<KisiAdres> getAllKisiAdres();
     Optional<KisiAdres> getKisiAdresById(Integer id);
     KisiAdres createKisiAdres(KisiAdres kisiAdres);
     KisiAdres updateKisiAdres(Integer id, KisiAdres kisiAdres);

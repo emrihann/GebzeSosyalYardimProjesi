@@ -4,8 +4,8 @@
  */
 package com.gebzesosyalyardim.GebzeSosyalYardim.controller;
 
-import com.gebzesosyalyardim.GebzeSosyalYardim.entities.Kisi;
-import com.gebzesosyalyardim.GebzeSosyalYardim.service.KisiService;
+import com.gebzesosyalyardim.GebzeSosyalYardim.entities.MuracaatBilgi;
+import com.gebzesosyalyardim.GebzeSosyalYardim.service.MuracaatBilgiService;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,40 +18,38 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
-
 /**
  *
  * @author emirh
  */
 @RestController
-@RequestMapping("/api/kisiler")
-public class KisiController {
-   @Autowired
-    private KisiService kisiService;
+@RequestMapping("/api/muracaatbilgi")
+public class MuracaatBilgiController {
+    @Autowired
+    private MuracaatBilgiService muracaatBilgiService;
 
     @GetMapping
-    public List<Kisi> getAllKisi() {
-        return kisiService.getAllKisi();
+    public List<MuracaatBilgi> getAllMuracaatBilgi() {
+        return muracaatBilgiService.getAllMuracaatBilgi();
     }
 
     @GetMapping("/{id}")
-    public Optional<Kisi> getKisiById(@PathVariable Integer id) {
-        return kisiService.getKisiById(id);
+    public Optional<MuracaatBilgi> getMuracaatBilgiById(@PathVariable Integer id) {
+        return muracaatBilgiService.getMuracaatBilgiById(id);
     }
 
     @PostMapping
-    public Kisi createKisi(@RequestBody Kisi kisi) {
-        return kisiService.createKisi(kisi);
+    public MuracaatBilgi createMuracaatBilgi(@RequestBody MuracaatBilgi muracaatBilgi) {
+        return muracaatBilgiService.createMuracaatBilgi(muracaatBilgi);
     }
 
     @PutMapping("/{id}")
-    public Kisi updateKisi(@PathVariable Integer id, @RequestBody Kisi kisi) {
-        return kisiService.updateKisi(id, kisi);
+    public MuracaatBilgi updateMuracaatBilgi(@PathVariable Integer id, @RequestBody MuracaatBilgi muracaatBilgi) {
+        return muracaatBilgiService.updateMuracaatBilgi(id, muracaatBilgi);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteKisi(@PathVariable Integer id) {
-        kisiService.deleteKisi(id);
+    public void deleteMuracaatBilgi(@PathVariable Integer id) {
+        muracaatBilgiService.deleteMuracaatBilgi(id);
     }
 }

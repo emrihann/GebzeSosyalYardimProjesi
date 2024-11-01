@@ -4,7 +4,7 @@
  */
 package com.gebzesosyalyardim.GebzeSosyalYardim.service;
 
-import com.gebzesosyalyardim.GebzeSosyalYardim.entities.Kisi;
+import com.gebzesosyalyardim.GebzeSosyalYardim.entities.Kurum;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,10 +12,10 @@ import java.util.Optional;
  *
  * @author emirh
  */
-public interface KisiService {
-     List<Kisi> getAllKisi();
-    Optional<Kisi> getKisiById(Integer id);
-    Kisi createKisi(Kisi kisi);
-    Kisi updateKisi(Integer id, Kisi kisi);
-    void deleteKisi(Integer id);
+public interface KurumService {
+     List<Kurum> getAllKurum();
+    Optional<Kurum> getKurumById(Integer id);
+    Kurum createKurum(Kurum kurum);
+    Kurum updateKurum(Integer id, Kurum kurum);
+    void deleteKurum(Integer id);
 }

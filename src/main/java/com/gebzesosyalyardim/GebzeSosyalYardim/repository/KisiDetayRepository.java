@@ -4,7 +4,7 @@
  */
 package com.gebzesosyalyardim.GebzeSosyalYardim.repository;
 
-import com.gebzesosyalyardim.GebzeSosyalYardim.entities.KisiYakinlar;
+import com.gebzesosyalyardim.GebzeSosyalYardim.entities.KisiDetay;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -13,6 +13,6 @@ import org.springframework.stereotype.Repository;
  * @author emirh
  */
 @Repository
-public interface KisiYakinlarRepository extends JpaRepository <KisiYakinlar, Integer> {
+public interface KisiDetayRepository extends JpaRepository <KisiDetay, Integer> {
     
 }

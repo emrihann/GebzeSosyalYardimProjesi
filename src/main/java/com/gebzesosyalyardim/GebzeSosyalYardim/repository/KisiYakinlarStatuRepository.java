@@ -6,11 +6,13 @@ package com.gebzesosyalyardim.GebzeSosyalYardim.repository;
 
 import com.gebzesosyalyardim.GebzeSosyalYardim.entities.KisiYakinlarStatu;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author emirh
  */
+@Repository
 public interface KisiYakinlarStatuRepository extends JpaRepository <KisiYakinlarStatu, Integer>{
     
 }
