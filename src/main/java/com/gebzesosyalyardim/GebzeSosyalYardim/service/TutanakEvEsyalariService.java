@@ -4,7 +4,7 @@
  */
 package com.gebzesosyalyardim.GebzeSosyalYardim.service;
 
-import com.gebzesosyalyardim.GebzeSosyalYardim.entities.KisiEngel;
+import com.gebzesosyalyardim.GebzeSosyalYardim.entities.TutanakEvEsyalari;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,10 +12,9 @@ import java.util.Optional;
  *
  * @author emirh
  */
-public interface KisiEngelService {
-    List<KisiEngel> getAllKisiEngel();
-    Optional<KisiEngel> getKisiEngelById(Integer id);
-    KisiEngel createKisiEngel(KisiEngel kisiEngel);
-    KisiEngel updateKisiEngel(Integer id, KisiEngel kisiEngel);
-    void deleteKisiEngel(Integer id);
+public interface TutanakEvEsyalariService {
+    List<TutanakEvEsyalari> findAll();
+    Optional<TutanakEvEsyalari> findById(Integer id);
+    TutanakEvEsyalari save(TutanakEvEsyalari tutanakEvEsyalari);
+    void deleteById(Integer id);
 }

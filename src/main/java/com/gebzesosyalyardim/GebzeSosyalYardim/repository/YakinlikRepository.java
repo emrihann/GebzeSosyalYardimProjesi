@@ -4,10 +4,15 @@
  */
 package com.gebzesosyalyardim.GebzeSosyalYardim.repository;
 
+import com.gebzesosyalyardim.GebzeSosyalYardim.entities.Yakinlik;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
 /**
  *
  * @author emirh
  */
-public interface YakinlikRepository {
+@Repository
+public interface YakinlikRepository extends JpaRepository<Yakinlik, Integer> {
     
 }

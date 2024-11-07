@@ -4,10 +4,15 @@
  */
 package com.gebzesosyalyardim.GebzeSosyalYardim.repository;
 
+import com.gebzesosyalyardim.GebzeSosyalYardim.entities.TutanakInceleme;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
 /**
  *
  * @author emirh
  */
-public interface TutanakIncelemeRepository {
+@Repository
+public interface TutanakIncelemeRepository extends JpaRepository<TutanakInceleme, String> {
     
 }

@@ -4,7 +4,7 @@
  */
 package com.gebzesosyalyardim.GebzeSosyalYardim.repository;
 
-import com.gebzesosyalyardim.GebzeSosyalYardim.entities.YardimTur;
+import com.gebzesosyalyardim.GebzeSosyalYardim.entities.YardimStatu;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -13,6 +13,6 @@ import org.springframework.stereotype.Repository;
  * @author emirh
  */
 @Repository
-public interface YardimTurRepository  extends JpaRepository<YardimTur, Integer> {
+public interface YardimStatuRepository extends JpaRepository<YardimStatu, Integer>{
     
 }
