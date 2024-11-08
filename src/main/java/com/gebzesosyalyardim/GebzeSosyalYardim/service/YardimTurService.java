@@ -13,7 +13,7 @@ import java.util.Optional;
  * @author emirh
  */
 public interface YardimTurService {
-     YardimTur saveYardimTur(YardimTur yardimTur);
+    YardimTur saveYardimTur(YardimTur yardimTur);
     Optional<YardimTur> getYardimTurById(int id);
     List<YardimTur> getAllYardimTurler();
     YardimTur updateYardimTur(YardimTur yardimTur);

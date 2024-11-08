@@ -4,6 +4,7 @@
  */
 package com.gebzesosyalyardim.GebzeSosyalYardim.repository;
 
+import com.gebzesosyalyardim.GebzeSosyalYardim.DTO.KisiDto;
 import com.gebzesosyalyardim.GebzeSosyalYardim.entities.Kisi;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -16,5 +17,7 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface KisiRepository extends JpaRepository <Kisi, Integer> {
+
+    public KisiDto save(KisiDto kisiDto);
    
 }
