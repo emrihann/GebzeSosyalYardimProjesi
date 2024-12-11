@@ -5,8 +5,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 
 
+
 @SpringBootTest
-public class GebzeSosyalYardimApplicationTests {
+class GebzeSosyalYardimApplicationTests {
 
 	@Test
 	void contextLoads() {

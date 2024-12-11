@@ -9,6 +9,8 @@ import com.gebzesosyalyardim.GebzeSosyalYardim.service.KisiDetayService;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,33 +25,56 @@ import org.springframework.web.bind.annotation.RestController;
  * @author emirh
  */
 @RestController
-@RequestMapping("/kisiDetay")
+@RequestMapping("/api/kisi-detay")
 public class KisiDetayController {
+    private final KisiDetayService kisiDetayService;
+
     @Autowired
-    private KisiDetayService kisiDetayService;
+    public KisiDetayController(KisiDetayService kisiDetayService) {
+        this.kisiDetayService = kisiDetayService;
+    }
 
+    // Tüm KisiDetay'ları listeleme
     @GetMapping
-    public List<KisiDetay> getAllKisiDetay() {
-        return kisiDetayService.getAllKisiDetay();
+    public ResponseEntity<List<KisiDetay>> getAllKisiDetay() {
+        List<KisiDetay> kisiDetayList = kisiDetayService.getAllKisiDetay();
+        return new ResponseEntity<>(kisiDetayList, HttpStatus.OK);
     }
 
+    // ID'ye göre KisiDetay alma
     @GetMapping("/{id}")
-    public Optional<KisiDetay> getKisiDetayById(@PathVariable Integer id) {
-        return kisiDetayService.getKisiDetayById(id);
+    public ResponseEntity<KisiDetay> getKisiDetayById(@PathVariable Integer id) {
+        Optional<KisiDetay> kisiDetay = kisiDetayService.getKisiDetayById(id);
+        if (kisiDetay.isPresent()) {
+            return new ResponseEntity<>(kisiDetay.get(), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
+    // Yeni KisiDetay oluşturma
     @PostMapping
-    public KisiDetay createKisiDetay(@RequestBody KisiDetay kisiDetay) {
-        return kisiDetayService.createKisiDetay(kisiDetay);
+    public ResponseEntity<KisiDetay> createKisiDetay(@RequestBody KisiDetay kisiDetay) {
+        KisiDetay createdKisiDetay = kisiDetayService.saveKisiDetay(kisiDetay);
+        return new ResponseEntity<>(createdKisiDetay, HttpStatus.CREATED);
     }
 
+    // KisiDetay güncelleme
     @PutMapping("/{id}")
-    public KisiDetay updateKisiDetay(@PathVariable Integer id, @RequestBody KisiDetay kisiDetay) {
-        return kisiDetayService.updateKisiDetay(id, kisiDetay);
+    public ResponseEntity<KisiDetay> updateKisiDetay(@PathVariable Integer id, @RequestBody KisiDetay kisiDetay) {
+        KisiDetay updatedKisiDetay = kisiDetayService.updateKisiDetay(id, kisiDetay);
+        if (updatedKisiDetay != null) {
+            return new ResponseEntity<>(updatedKisiDetay, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
+    // KisiDetay silme
     @DeleteMapping("/{id}")
-    public void deleteKisiDetay(@PathVariable Integer id) {
-        kisiDetayService.deleteKisiDetay(id);
+    public ResponseEntity<Void> deleteKisiDetay(@PathVariable Integer id) {
+        boolean isDeleted = kisiDetayService.deleteKisiDetay(id);
+        if (isDeleted) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 }

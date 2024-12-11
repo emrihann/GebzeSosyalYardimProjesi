@@ -23,6 +23,12 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
         <dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-test</artifactId>
+    <scope>test</scope>
+</dependency>
+
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
@@ -36,7 +42,6 @@
             <artifactId>modelmapper</artifactId>
             <version>3.2.1</version>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
@@ -53,30 +58,47 @@
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
+      
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-test</artifactId>
             <scope>test</scope>
-        </dependency>              
+        </dependency>
+        <!-- Hibernate 5.6.10 Bağımlılığı -->
+        <dependency>
+            <groupId>org.hibernate.orm</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>6.6.3.Final</version>
+        </dependency>
     </dependencies>
 
     <build>
         <plugins>
+            <!-- Spring Boot Plugin -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>3.9.9</version>
                 <configuration>
                     <excludes>
                         <exclude>
                             <groupId>org.projectlombok</groupId>
                             <artifactId>lombok</artifactId>
+                            
+                            
                         </exclude>
                     </excludes>
+                </configuration>
+            </plugin>
+
+            <!-- Maven Compiler Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.13.0</version>
+                <configuration>
+                    
+                    
                 </configuration>
             </plugin>
 
@@ -84,17 +106,20 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
-                <version>3.1.0</version>
+                <version>3.1.0</version> <!-- 3.2.5 yerine 3.1.0 -->
                 <executions>
                     <execution>
                         <goals>
                             <goal>exec</goal>
                         </goals>
                         <configuration>
-                            <executable>C:\Program Files\Java\jdk-17\bin\java.exe</executable>
+                            <executable>C:\Program Files\Apache NetBeans\jdk</executable>
                             <arguments>
-                                <argument>-Dexec.mainClass=com.gebzesosyalyardim.Application</argument> <!-- Ana sınıfınızı buraya yazın -->
+                                <argument>-Dexec.mainClass=com.gebzesosyalyardim.Application</argument>
+                                <argument>-cp</argument>
+                                <argument>${project.build.outputDirectory}</argument>
                             </arguments>
+                            
                         </configuration>
                     </execution>
                 </executions>

@@ -1,5 +1,5 @@
+C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\config\HibernateConfig.java
 C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\config\ModelMapperConfig.java
-C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\controller\KisiAdresController.java
 C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\controller\KisiAskerlikController.java
 C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\controller\KisiController.java
 C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\controller\KisiDetayController.java
@@ -25,10 +25,8 @@ C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main
 C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\controller\YakinlikController.java
 C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\controller\YardimAltController.java
 C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\controller\YardimController.java
+C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\controller\YardimStatuController.java
 C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\controller\YardimTurController.java
-C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\DTO\KisiAdresDto.java
-C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\DTO\KisiAskerlikDto.java
-C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\DTO\KisiDetayDto.java
 C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\DTO\KisiDto.java
 C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\DTO\KisiEngelDto.java
 C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\DTO\KisiIletisimDto.java
@@ -39,7 +37,6 @@ C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main
 C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\entities\GuvenceBirim.java
 C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\entities\Hastalik.java
 C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\entities\Kisi.java
-C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\entities\KisiAdres.java
 C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\entities\KisiAskerlik.java
 C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\entities\KisiDetay.java
 C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\entities\KisiEngel.java
@@ -68,8 +65,6 @@ C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main
 C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\entities\YardimStatu.java
 C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\entities\YardimTur.java
 C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\GebzeSosyalYardimApplication.java
-C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\repository\DataBaseConnectionTestRepository.java
-C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\repository\KisiAdresRepository.java
 C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\repository\KisiAskerlikRepository.java
 C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\repository\KisiDetayRepository.java
 C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\repository\KisiEngelRepository.java
@@ -98,12 +93,8 @@ C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main
 C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\repository\YardimRepository.java
 C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\repository\YardimStatuRepository.java
 C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\repository\YardimTurRepository.java
-C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\service\KisiAdresService.java
-C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\service\KisiAdresServiceImpl.java
 C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\service\KisiAskerlikService.java
-C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\service\KisiAskerlikServiceImpl.java
 C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\service\KisiDetayService.java
-C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\service\KisiDetayServiceImpl.java
 C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\service\KisiEngelService.java
 C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\service\KisiEngelServiceImpl.java
 C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\service\KisiIletisimService.java

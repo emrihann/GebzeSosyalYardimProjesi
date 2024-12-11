@@ -13,52 +13,46 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import java.util.Date;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-
-
 
 /**
  *
  * @author emirh
  */
-@Entity
 @Data
-@Table(name="KISI_ASKERLIK")
-@NoArgsConstructor
-@AllArgsConstructor
+@Entity
+@Table(name = "kisi_askerlik")
 public class KisiAskerlik {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ASKERLIK_ID")
+    @Column(name = "askerlik_id")
     private Integer askerlik_id;
 
-    @Column(name = "ASKER_HUKUMLU")
+    @Column(name = "asker_hukumlu")
     private Integer asker_hukumlu;
 
-    @Column(name = "SURE")
+    @Column(name = "sure")
     private Integer sure;
 
-    @Column(name = "ACIKLAMA", length = 500)
+    @Column(name = "aciklama")
     private String aciklama;
 
+    @Column(name = "baslangic_tarihi")
     @Temporal(TemporalType.DATE)
-    @Column(name = "BASLANGIC_TARIHI")
     private Date baslangic_tarihi;
 
+    @Column(name = "bitis_tarihi")
     @Temporal(TemporalType.DATE)
-    @Column(name = "BITIS_TARIHI")
     private Date bitis_tarihi;
 
-    @Column(name = "AKTIF", nullable = false)
+    @Column(name = "aktif")
     private Integer aktif = 1;
 
+    @Column(name = "kayit_tarihi")
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "KAYIT_TARIHI")
     private Date kayit_tarihi;
 
+    @Column(name = "guncelleme_tarihi")
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "GUNCELLEME_TARIHI")
     private Date guncelleme_tarihi;
 }

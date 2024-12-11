@@ -10,8 +10,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
 import java.util.Date;
 import lombok.Data;
 
@@ -20,33 +18,33 @@ import lombok.Data;
  * @author emirh
  */
 @Entity
-@Data
-@Table(name = "KISI_DETAY") 
+@Table(name = "KisiDetay")
+@Data  // Lombok @Data anotasyonu ekledik
 public class KisiDetay {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "DETAY_ID")
+    @Column(name = "detay_id")
     private Integer detayId;
 
-    @Column(name = "KISI_ILETISIM_ID")
+    @Column(name = "kisi_iletisim_id")
     private Integer kisiIletisimId;
 
-    @Column(name = "KISI_ADRES_ID")
+    @Column(name = "kisi_adres_id")
     private Integer kisiAdresId;
 
-    @Column(name = "KISI_EGITIM_ID")
+    @Column(name = "kisi_egitim_id")
     private Integer kisiEgitimId;
 
-    @Column(name = "KISI_ENGEL_ID")
+    @Column(name = "kisi_engel_id")
     private Integer kisiEngelId;
 
-    @Column(name = "MESLEK_ID")
+    @Column(name = "meslek_id")
     private Integer meslekId;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "GUNCELLEME_TARIHI")
+    @Column(name = "guncelleme_tarihi")
     private Date guncellemeTarihi;
 
-    @Column(name = "ASKERLIK_ID")
+    @Column(name = "askerlik_id")
     private Integer askerlikId;
+
 }

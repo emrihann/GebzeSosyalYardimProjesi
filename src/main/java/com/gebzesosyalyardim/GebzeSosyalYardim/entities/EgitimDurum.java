@@ -4,6 +4,8 @@
  */
 package com.gebzesosyalyardim.GebzeSosyalYardim.entities;
 
+import java.util.Date;
+
 /**
  *
  * @author emirh
