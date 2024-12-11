@@ -13,7 +13,11 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import java.util.Date;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
+
 
 /**
  *
@@ -22,6 +26,8 @@ import lombok.Data;
 @Entity
 @Data
 @Table(name="KISI_ASKERLIK")
+@NoArgsConstructor
+@AllArgsConstructor
 public class KisiAskerlik {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
