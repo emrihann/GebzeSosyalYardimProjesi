@@ -102,7 +102,6 @@ com\gebzesosyalyardim\GebzeSosyalYardim\repository\TutanakDurumRepository.class
 com\gebzesosyalyardim\GebzeSosyalYardim\repository\TutanakEvDurumRepository.class
 com\gebzesosyalyardim\GebzeSosyalYardim\service\TutanakDurumService.class
 com\gebzesosyalyardim\GebzeSosyalYardim\config\ModelMapperConfig.class
-com\gebzesosyalyardim\GebzeSosyalYardim\DTO\KisiDto.class
 com\gebzesosyalyardim\GebzeSosyalYardim\entities\GuvenceBirim.class
 com\gebzesosyalyardim\GebzeSosyalYardim\repository\TutanakMulkiyetRepository.class
 com\gebzesosyalyardim\GebzeSosyalYardim\service\TutanakBorcServiceImpl.class
