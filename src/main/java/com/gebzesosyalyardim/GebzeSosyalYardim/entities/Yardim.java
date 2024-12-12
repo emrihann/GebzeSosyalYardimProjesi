@@ -20,6 +20,16 @@ import lombok.Data;
 @Data
 @Table(name="YARDIM")
 public class Yardim {
+
+    public Yardim() {
+    }
+
+    public Yardim(Integer yardim_tip_id, String yardim_tip, Integer yardim_tur_id, Integer aktif) {
+        this.yardim_tip_id = yardim_tip_id;
+        this.yardim_tip = yardim_tip;
+        this.yardim_tur_id = yardim_tur_id;
+        this.aktif = aktif;
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "yardim_tip_id")

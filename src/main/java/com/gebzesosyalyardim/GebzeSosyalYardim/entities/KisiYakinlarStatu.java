@@ -23,6 +23,19 @@ import lombok.Data;
 @Data
 @Table(name="KISI_YAKINLAR_STATU")
 public class KisiYakinlarStatu {
+
+    public KisiYakinlarStatu() {
+    }
+    
+
+    public KisiYakinlarStatu(Integer ozelStatuId, String ozelStatu, Integer aktif, Date kayitTarihi, Date guncellemeTarihi) {
+        this.ozelStatuId = ozelStatuId;
+        this.ozelStatu = ozelStatu;
+        this.aktif = aktif;
+        this.kayitTarihi = kayitTarihi;
+        this.guncellemeTarihi = guncellemeTarihi;
+    }
+    
  @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ozel_statu_id")

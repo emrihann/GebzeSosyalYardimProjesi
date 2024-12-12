@@ -23,6 +23,16 @@ import lombok.Data;
 @Data
 @Table(name="YARDIM_TUR")
 public class YardimTur {
+
+    public YardimTur() {
+    }
+
+    public YardimTur(Integer tur_id, String tur, Date kayit_tarihi, Integer aktif) {
+        this.tur_id = tur_id;
+        this.tur = tur;
+        this.kayit_tarihi = kayit_tarihi;
+        this.aktif = aktif;
+    }
      @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "tur_id")

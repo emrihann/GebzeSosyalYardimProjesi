@@ -23,6 +23,17 @@ import lombok.Data;
 @Data
 @Table(name="MURACAAT_YARDIM_TALEP")
 public class MuracaatYardimTalep {
+
+    public MuracaatYardimTalep() {
+    }
+
+    public MuracaatYardimTalep(Integer talepId, Integer muracaatId, Integer yardimTip, Integer yardimTurId, Date guncellemeTarihi) {
+        this.talepId = talepId;
+        this.muracaatId = muracaatId;
+        this.yardimTip = yardimTip;
+        this.yardimTurId = yardimTurId;
+        this.guncellemeTarihi = guncellemeTarihi;
+    }
      @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "TALEP_ID")

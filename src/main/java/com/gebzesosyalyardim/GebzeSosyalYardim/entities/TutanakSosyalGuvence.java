@@ -23,6 +23,17 @@ import lombok.Data;
 @Data
 @Table(name="TUTANAK_SAGLIK_GUVENCE")
 public class TutanakSosyalGuvence {
+
+    public TutanakSosyalGuvence() {
+    }
+
+    public TutanakSosyalGuvence(Integer sosyalGuvenceId, Integer guvenceId, Integer birimId, String birimAciklama, Date guncellemeTarihi) {
+        this.sosyalGuvenceId = sosyalGuvenceId;
+        this.guvenceId = guvenceId;
+        this.birimId = birimId;
+        this.birimAciklama = birimAciklama;
+        this.guncellemeTarihi = guncellemeTarihi;
+    }
       @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "SOSYAL_GUVENCE_ID")

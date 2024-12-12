@@ -20,6 +20,15 @@ import lombok.Data;
 @Data
 @Table(name="YAKINLIK")
 public class Yakinlik {
+
+    public Yakinlik() {
+    }
+
+    public Yakinlik(Integer yakinlikId, String yakinlikIsim, Integer aktiflik) {
+        this.yakinlikId = yakinlikId;
+        this.yakinlikIsim = yakinlikIsim;
+        this.aktiflik = aktiflik;
+    }
      @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "yakinlik_id")

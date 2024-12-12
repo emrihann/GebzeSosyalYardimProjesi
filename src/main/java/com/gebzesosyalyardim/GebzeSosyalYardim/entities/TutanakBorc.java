@@ -23,6 +23,14 @@ import lombok.Data;
 @Data
 @Table(name="TUTANAK_BORC")
 public class TutanakBorc {
+
+    public TutanakBorc() {
+    }
+
+    public TutanakBorc(Integer borcId, Date guncellemeTarihi) {
+        this.borcId = borcId;
+        this.guncellemeTarihi = guncellemeTarihi;
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "BORC_ID")

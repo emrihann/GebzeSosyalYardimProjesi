@@ -20,6 +20,14 @@ import lombok.Data;
 @Data
 @Table(name="TUTANAK_INCELEME")
 public class TutanakInceleme {
+
+    public TutanakInceleme() {
+    }
+
+    public TutanakInceleme(String tutanak_id, String tutanak_inceleme) {
+        this.tutanak_id = tutanak_id;
+        this.tutanak_inceleme = tutanak_inceleme;
+    }
   @Id
   @GeneratedValue(strategy=GenerationType.IDENTITY)
   @Column(name="TUTANAK_ID")

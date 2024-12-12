@@ -24,6 +24,19 @@ import lombok.Data;
 @Table(name="TUTANAK_EV_ESYALARI")
 
 public class TutanakEvEsyalari {
+
+    public TutanakEvEsyalari() {
+    }
+
+    public TutanakEvEsyalari(Integer esyalarId, Integer kisiId, String kisiIsim, Integer esyaId, String esyaIsim, Date guncellemeTarihi, Integer aktiflik) {
+        this.esyalarId = esyalarId;
+        this.kisiId = kisiId;
+        this.kisiIsim = kisiIsim;
+        this.esyaId = esyaId;
+        this.esyaIsim = esyaIsim;
+        this.guncellemeTarihi = guncellemeTarihi;
+        this.aktiflik = aktiflik;
+    }
       @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ESYALAR_ID")

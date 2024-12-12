@@ -23,6 +23,25 @@ import lombok.Data;
 @Data
 @Table(name="TUTANAK_MULKIYET")
 public class TutanakMulkiyet {
+
+    public TutanakMulkiyet() {
+    }
+
+    public TutanakMulkiyet(Integer mulkiyetId, Integer mulkiyetSiraNo, Integer evDurumId, Float kiraMiktar, Integer yakacakTipId, Integer kiradaEvSayisi, String arabaModel, String gayrimenkulTur, Integer evTipId, Date guncellemeTarihi, String evDurumIsim, String yakacakTipIsim, String evTipIsim) {
+        this.mulkiyetId = mulkiyetId;
+        this.mulkiyetSiraNo = mulkiyetSiraNo;
+        this.evDurumId = evDurumId;
+        this.kiraMiktar = kiraMiktar;
+        this.yakacakTipId = yakacakTipId;
+        this.kiradaEvSayisi = kiradaEvSayisi;
+        this.arabaModel = arabaModel;
+        this.gayrimenkulTur = gayrimenkulTur;
+        this.evTipId = evTipId;
+        this.guncellemeTarihi = guncellemeTarihi;
+        this.evDurumIsim = evDurumIsim;
+        this.yakacakTipIsim = yakacakTipIsim;
+        this.evTipIsim = evTipIsim;
+    }
       @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "MULKIYET_ID")

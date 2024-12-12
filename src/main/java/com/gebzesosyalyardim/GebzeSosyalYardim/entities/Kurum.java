@@ -20,6 +20,17 @@ import lombok.Data;
 @Data
 @Table(name="KURUM")
 public class Kurum {
+
+    public Kurum() {
+    }
+    
+
+    public Kurum(Integer kurumId, String kurumIsim, Integer aktif) {
+        this.kurumId = kurumId;
+        this.kurumIsim = kurumIsim;
+        this.aktif = aktif;
+    }
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "kurum_id")

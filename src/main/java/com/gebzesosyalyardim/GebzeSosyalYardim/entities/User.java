@@ -24,6 +24,20 @@ import lombok.Data;
 @Data
 @Table(name="USER")
 public class User {
+
+    public User(int kullaniciId, Integer kullaniciDurumId, String kullaniciIsim, String kullaniciAdres, BigInteger kullaniciSicilNo, BigInteger kullaniciTelefon, char kullaniciCinsiyet, Date kullaniciKayitTarih, Integer kullaniciProfilId, String kullanniciEposta, String sifre) {
+        this.kullaniciId = kullaniciId;
+        this.kullaniciDurumId = kullaniciDurumId;
+        this.kullaniciIsim = kullaniciIsim;
+        this.kullaniciAdres = kullaniciAdres;
+        this.kullaniciSicilNo = kullaniciSicilNo;
+        this.kullaniciTelefon = kullaniciTelefon;
+        this.kullaniciCinsiyet = kullaniciCinsiyet;
+        this.kullaniciKayitTarih = kullaniciKayitTarih;
+        this.kullaniciProfilId = kullaniciProfilId;
+        this.kullanniciEposta = kullanniciEposta;
+        this.sifre = sifre;
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "kullanici_id")

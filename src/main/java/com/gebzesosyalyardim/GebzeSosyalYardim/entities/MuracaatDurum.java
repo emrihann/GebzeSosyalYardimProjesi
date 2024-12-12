@@ -23,6 +23,17 @@ import lombok.Data;
 @Data
 @Table(name="MURACAAR_DURUM")
 public class MuracaatDurum {
+
+    public MuracaatDurum() {
+    }
+
+    public MuracaatDurum(Integer durumId, String durum, Integer aktif, Date kayitTarihi, Integer ekleyenKisiId) {
+        this.durumId = durumId;
+        this.durum = durum;
+        this.aktif = aktif;
+        this.kayitTarihi = kayitTarihi;
+        this.ekleyenKisiId = ekleyenKisiId;
+    }
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -23,6 +23,21 @@ import lombok.Data;
 @Entity
 @Table(name = "kisi_askerlik")
 public class KisiAskerlik {
+
+    public KisiAskerlik() {
+    }
+
+    public KisiAskerlik(Integer askerlik_id, Integer asker_hukumlu, Integer sure, String aciklama, Date baslangic_tarihi, Date bitis_tarihi, Date kayit_tarihi, Date guncelleme_tarihi) {
+        this.askerlik_id = askerlik_id;
+        this.asker_hukumlu = asker_hukumlu;
+        this.sure = sure;
+        this.aciklama = aciklama;
+        this.baslangic_tarihi = baslangic_tarihi;
+        this.bitis_tarihi = bitis_tarihi;
+        this.kayit_tarihi = kayit_tarihi;
+        this.guncelleme_tarihi = guncelleme_tarihi;
+    }
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "askerlik_id")

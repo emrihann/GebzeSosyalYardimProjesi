@@ -21,6 +21,22 @@ import lombok.Data;
 @Table(name = "KisiDetay")
 @Data  // Lombok @Data anotasyonu ekledik
 public class KisiDetay {
+
+    public KisiDetay() {
+    }
+    
+
+    public KisiDetay(Integer detayId, Integer kisiIletisimId, Integer kisiAdresId, Integer kisiEgitimId, Integer kisiEngelId, Integer meslekId, Date guncellemeTarihi, Integer askerlikId) {
+        this.detayId = detayId;
+        this.kisiIletisimId = kisiIletisimId;
+        this.kisiAdresId = kisiAdresId;
+        this.kisiEgitimId = kisiEgitimId;
+        this.kisiEngelId = kisiEngelId;
+        this.meslekId = meslekId;
+        this.guncellemeTarihi = guncellemeTarihi;
+        this.askerlikId = askerlikId;
+    }
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "detay_id")

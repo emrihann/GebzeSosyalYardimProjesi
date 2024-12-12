@@ -23,6 +23,17 @@ import lombok.Data;
 @Data
 @Table(name="YARDIM_STATU")
 public class YardimStatu {
+
+    public YardimStatu() {
+    }
+
+    public YardimStatu(Integer statu_id, String statu_isim, Date kayit_tarihi, Integer aktif, Date guncelleme_tarihi) {
+        this.statu_id = statu_id;
+        this.statu_isim = statu_isim;
+        this.kayit_tarihi = kayit_tarihi;
+        this.aktif = aktif;
+        this.guncelleme_tarihi = guncelleme_tarihi;
+    }
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="statu_id")

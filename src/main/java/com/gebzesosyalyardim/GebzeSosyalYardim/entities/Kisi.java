@@ -24,6 +24,34 @@ import lombok.Data;
 @Data
 @Table(name="KISI")
 public class Kisi {
+
+    public Kisi() {
+    }
+
+    public Kisi(Integer kisi_id, BigDecimal kimlik_no, String isim, String soyisim, String cinsiyet, Integer cilt_no, Integer aile_sira_no, Integer sira_no, Date dogum_tarihi, Integer medeni_durum_id, Integer mahalle_id, Integer sokak_id, String site, String adres_tarifi, Integer kapi_no, Integer daire_no, String ev_telefon, String cep_telefon, String eposta, Date kayit_tarihi, Integer aktif) {
+        this.kisi_id = kisi_id;
+        this.kimlik_no = kimlik_no;
+        this.isim = isim;
+        this.soyisim = soyisim;
+        this.cinsiyet = cinsiyet;
+        this.cilt_no = cilt_no;
+        this.aile_sira_no = aile_sira_no;
+        this.sira_no = sira_no;
+        this.dogum_tarihi = dogum_tarihi;
+        this.medeni_durum_id = medeni_durum_id;
+        this.mahalle_id = mahalle_id;
+        this.sokak_id = sokak_id;
+        this.site = site;
+        this.adres_tarifi = adres_tarifi;
+        this.kapi_no = kapi_no;
+        this.daire_no = daire_no;
+        this.ev_telefon = ev_telefon;
+        this.cep_telefon = cep_telefon;
+        this.eposta = eposta;
+        this.kayit_tarihi = kayit_tarihi;
+        this.aktif = aktif;
+    }
+    
    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "KISI_ID")

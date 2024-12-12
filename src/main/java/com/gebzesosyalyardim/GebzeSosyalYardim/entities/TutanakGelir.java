@@ -23,6 +23,15 @@ import lombok.Data;
 @Data
 @Table(name="TUTANAK_GELIR")
 public class TutanakGelir {
+
+    public TutanakGelir() {
+    }
+
+    public TutanakGelir(Integer gelirId, Date kayitTarihi, Date guncellemeTarihi) {
+        this.gelirId = gelirId;
+        this.kayitTarihi = kayitTarihi;
+        this.guncellemeTarihi = guncellemeTarihi;
+    }
      @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "GELIR_ID")
