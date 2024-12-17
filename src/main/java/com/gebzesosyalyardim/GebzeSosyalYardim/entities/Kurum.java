@@ -10,7 +10,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  *
@@ -19,18 +21,9 @@ import lombok.Data;
 @Entity
 @Data
 @Table(name="KURUM")
+@NoArgsConstructor
+@AllArgsConstructor
 public class Kurum {
-
-    public Kurum() {
-    }
-    
-
-    public Kurum(Integer kurumId, String kurumIsim, Integer aktif) {
-        this.kurumId = kurumId;
-        this.kurumIsim = kurumIsim;
-        this.aktif = aktif;
-    }
-    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "kurum_id")

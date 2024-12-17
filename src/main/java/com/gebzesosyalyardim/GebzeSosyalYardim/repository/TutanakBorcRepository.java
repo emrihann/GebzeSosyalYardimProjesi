@@ -13,6 +13,6 @@ import org.springframework.stereotype.Repository;
  * @author emirh
  */
 @Repository
-public interface TutanakBorcRepository extends JpaRepository <TutanakBorc,Integer> {
+public interface TutanakBorcRepository extends JpaRepository<TutanakBorc, Long> {
     
 }

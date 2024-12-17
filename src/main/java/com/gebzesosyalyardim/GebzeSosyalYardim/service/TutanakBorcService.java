@@ -14,9 +14,10 @@ import java.util.Optional;
  * @author emirh
  */
 public interface TutanakBorcService {
-      List<TutanakBorc> getAllTutanakBorc();
-    Optional<TutanakBorc> getTutanakBorcById(Integer id);
-    TutanakBorc createTutanakBorc(TutanakBorc tutanakBorc);
-    TutanakBorc updateTutanakBorc(Integer id, TutanakBorc tutanakBorc);
-    void deleteTutanakBorc(Integer id);;
+    
+    TutanakBorc saveBorc(TutanakBorc tutanakBorc);
+    List<TutanakBorc> getAllBorcs();
+    Optional<TutanakBorc> getBorcById(Long id);
+    TutanakBorc updateBorc(Long id, TutanakBorc tutanakBorc);
+    void deleteBorc(Long id);
 }

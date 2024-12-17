@@ -15,6 +15,6 @@ import org.springframework.stereotype.Repository;
  * @author emirh
  */
 @Repository
-public interface MuracaatBilgiRepository extends JpaRepository<MuracaatBilgi, Integer> {
+public interface MuracaatBilgiRepository extends JpaRepository<MuracaatBilgi, Long> {
     
 }

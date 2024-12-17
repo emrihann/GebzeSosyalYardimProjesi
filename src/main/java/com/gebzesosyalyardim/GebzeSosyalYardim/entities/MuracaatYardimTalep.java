@@ -13,7 +13,9 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import java.util.Date;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  *
@@ -22,18 +24,9 @@ import lombok.Data;
 @Entity
 @Data
 @Table(name="MURACAAT_YARDIM_TALEP")
+@NoArgsConstructor
+@AllArgsConstructor
 public class MuracaatYardimTalep {
-
-    public MuracaatYardimTalep() {
-    }
-
-    public MuracaatYardimTalep(Integer talepId, Integer muracaatId, Integer yardimTip, Integer yardimTurId, Date guncellemeTarihi) {
-        this.talepId = talepId;
-        this.muracaatId = muracaatId;
-        this.yardimTip = yardimTip;
-        this.yardimTurId = yardimTurId;
-        this.guncellemeTarihi = guncellemeTarihi;
-    }
      @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "TALEP_ID")
@@ -44,9 +37,6 @@ public class MuracaatYardimTalep {
 
     @Column(name = "YARDIM_TIP")
     private Integer yardimTip;
-
-    @Column(name = "YARDIM_TUR_ID")
-    private Integer yardimTurId;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "GUNCELLEME_TARIHI")

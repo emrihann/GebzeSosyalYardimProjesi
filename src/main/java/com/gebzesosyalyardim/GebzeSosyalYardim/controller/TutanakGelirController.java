@@ -25,66 +25,32 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/ tutanakgelir")
 public class TutanakGelirController {
+    @Autowired
     private TutanakGelirService tutanakGelirService;
 
-    @Autowired
-    public TutanakGelirController(TutanakGelirService tutanakGelirService) {
-        this.tutanakGelirService = tutanakGelirService;
-    }
-
     @GetMapping
-    public List<TutanakGelir> getAllGelirler() {
-        return tutanakGelirService.findAll();
+    public ResponseEntity<List<TutanakGelir>> getAll() {
+        return ResponseEntity.ok(tutanakGelirService.getAll());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<TutanakGelir> getGelirById(@PathVariable Integer id) {
-        return tutanakGelirService.findById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+    public ResponseEntity<TutanakGelir> getById(@PathVariable Long id) {
+        return ResponseEntity.ok(tutanakGelirService.getById(id));
     }
 
     @PostMapping
-    public TutanakGelir createGelir(@RequestBody TutanakGelir tutanakGelir) {
-        return tutanakGelirService.save(tutanakGelir);
+    public ResponseEntity<TutanakGelir> create(@RequestBody TutanakGelir tutanakGelir) {
+        return ResponseEntity.ok(tutanakGelirService.save(tutanakGelir));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<TutanakGelir> updateGelir(@PathVariable Integer id, @RequestBody TutanakGelir gelirDetails) {
-        return tutanakGelirService.findById(id)
-                .map(existingGelir -> {
-                    existingGelir.setYaslilik(gelirDetails.getYaslilik());
-                    existingGelir.setEngelli(gelirDetails.getEngelli());
-                    existingGelir.setEngelliYakini(gelirDetails.getEngelliYakini());
-                    existingGelir.setYetimAyligi(gelirDetails.getYetimAyligi());
-                    existingGelir.setEmekliMaasi(gelirDetails.getEmekliMaasi());
-                    existingGelir.setEvdeBakimParasi(gelirDetails.getEvdeBakimParasi());
-                    existingGelir.setDulMaasi(gelirDetails.getDulMaasi());
-                    existingGelir.setIssizlikMaasi(gelirDetails.getIssizlikMaasi());
-                    existingGelir.setAskerMaasi(gelirDetails.getAskerMaasi());
-                    existingGelir.setKiraMaasi(gelirDetails.getKiraMaasi());
-                    existingGelir.setKaymakamlik(gelirDetails.getKaymakamlik());
-                    existingGelir.setSosyalHizmetler(gelirDetails.getSosyalHizmetler());
-                    existingGelir.setBuyuksehir(gelirDetails.getBuyuksehir());
-                    existingGelir.setOzelVakif(gelirDetails.getOzelVakif());
-                    existingGelir.setDiger(gelirDetails.getDiger());
-                    existingGelir.setDigerAciklama(gelirDetails.getDigerAciklama());
-                    existingGelir.setAktif(gelirDetails.getAktif());
-                    existingGelir.setKayitTarihi(gelirDetails.getKayitTarihi());
-                    existingGelir.setGuncellemeTarihi(gelirDetails.getGuncellemeTarihi());
-                    TutanakGelir updatedGelir = tutanakGelirService.save(existingGelir);
-                    return ResponseEntity.ok(updatedGelir);
-                })
-                .orElse(ResponseEntity.notFound().build());
+    public ResponseEntity<TutanakGelir> update(@PathVariable Long id, @RequestBody TutanakGelir tutanakGelir) {
+        return ResponseEntity.ok(tutanakGelirService.update(id, tutanakGelir));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteGelir(@PathVariable Integer id) {
-        if (tutanakGelirService.findById(id).isPresent()) {
-            tutanakGelirService.deleteById(id);
-            return ResponseEntity.noContent().build();
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        tutanakGelirService.delete(id);
+        return ResponseEntity.noContent().build();
     }
 }

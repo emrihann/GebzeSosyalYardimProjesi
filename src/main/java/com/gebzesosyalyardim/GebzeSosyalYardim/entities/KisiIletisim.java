@@ -9,12 +9,16 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import java.math.BigInteger;
+import java.time.ZonedDateTime;
 import java.util.Date;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  *
@@ -23,44 +27,30 @@ import lombok.Data;
 @Entity
 @Data
 @Table(name="KISI_ILETISIM")
+@NoArgsConstructor
+@AllArgsConstructor
 public class KisiIletisim {
-
-    public KisiIletisim() {
-    }
-    
-
-    public KisiIletisim(Integer kisi_iletisim_id, BigInteger ev_telefon, BigInteger cep_telefon, String eposta, Date kayit_tarihi, Integer aktif, Date guncelleme_tarihi) {
-        this.kisi_iletisim_id = kisi_iletisim_id;
-        this.ev_telefon = ev_telefon;
-        this.cep_telefon = cep_telefon;
-        this.eposta = eposta;
-        this.kayit_tarihi = kayit_tarihi;
-        this.aktif = aktif;
-        this.guncelleme_tarihi = guncelleme_tarihi;
-    }
-    
       @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "kisi_iletisim_seq")
+    @SequenceGenerator(name = "kisi_iletisim_seq", sequenceName = "GEBZEADMIN.ISEQ$$_88383", allocationSize = 1)
     @Column(name = "KISI_ILETISIM_ID")
-    private Integer kisi_iletisim_id;
+    private Long kisiIletisimId;
 
     @Column(name = "EV_TELEFON")
-    private BigInteger ev_telefon;
+    private Long evTelefon;
 
-    @Column(name = "CEP_TELEFON")
-    private BigInteger cep_telefon;
+    @Column(name = "CEP_TELEFON", nullable = false)
+    private Long cepTelefon;
 
-    @Column(name = "EPOSTA", length = 255)
+    @Column(name = "EPOSTA")
     private String eposta;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "KAYIT_TARIHI")
-    private Date kayit_tarihi;
+    @Column(name = "KAYIT_TARIHI", updatable = false)
+    private ZonedDateTime kayitTarihi;
 
-    @Column(name = "AKTIF", nullable = false)
+    @Column(name = "AKTIF")
     private Integer aktif;
 
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "GUNCELLEME_TARIHI")
-    private Date guncelleme_tarihi;
+    private ZonedDateTime guncellemeTarihi;
 }

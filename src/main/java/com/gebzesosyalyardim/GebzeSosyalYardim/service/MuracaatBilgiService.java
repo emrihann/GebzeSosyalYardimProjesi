@@ -14,9 +14,8 @@ import java.util.Optional;
  * @author emirh
  */
 public interface MuracaatBilgiService  {
+    MuracaatBilgi saveMuracaatBilgi(MuracaatBilgi muracaatBilgi);
+    Optional<MuracaatBilgi> getMuracaatBilgiById(Long id);
     List<MuracaatBilgi> getAllMuracaatBilgi();
-    Optional<MuracaatBilgi> getMuracaatBilgiById(Integer id);
-    MuracaatBilgi createMuracaatBilgi(MuracaatBilgi muracaatBilgi);
-    MuracaatBilgi updateMuracaatBilgi(Integer id, MuracaatBilgi muracaatBilgi);
-    void deleteMuracaatBilgi(Integer id);
+    void deleteMuracaatBilgi(Long id);
 }

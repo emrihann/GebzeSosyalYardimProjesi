@@ -13,6 +13,6 @@ import org.springframework.stereotype.Repository;
  * @author emirh
  */
 @Repository
-public interface KisiEngelRepository extends JpaRepository <KisiEngel, Integer> {
+public interface KisiEngelRepository extends JpaRepository<KisiEngel, Long> {
     
 }

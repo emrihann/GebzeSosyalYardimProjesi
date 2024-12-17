@@ -14,7 +14,9 @@ import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import java.math.BigInteger;
 import java.util.Date;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  *
@@ -23,29 +25,9 @@ import lombok.Data;
 @Entity
 @Data
 @Table(name="MURACAAT")
+@NoArgsConstructor
+@AllArgsConstructor
 public class Muracaat {
-
-    public Muracaat() {
-    }
-    
-
-    public Muracaat(Integer muracaatId, Integer kisiTemelId, Integer muracaatBilgiId, Date kayitTarihi, Integer aktif, Date guncellemeTarihi, BigInteger kimlikNo, String kisiIsim, String kisiSoyisim, Integer arsivDosyaNo, Date muracaatTarihi, String mahalle, String sokak, Integer muracaatDurumId) {
-        this.muracaatId = muracaatId;
-        this.kisiTemelId = kisiTemelId;
-        this.muracaatBilgiId = muracaatBilgiId;
-        this.kayitTarihi = kayitTarihi;
-        this.aktif = aktif;
-        this.guncellemeTarihi = guncellemeTarihi;
-        this.kimlikNo = kimlikNo;
-        this.kisiIsim = kisiIsim;
-        this.kisiSoyisim = kisiSoyisim;
-        this.arsivDosyaNo = arsivDosyaNo;
-        this.muracaatTarihi = muracaatTarihi;
-        this.mahalle = mahalle;
-        this.sokak = sokak;
-        this.muracaatDurumId = muracaatDurumId;
-    }
-    
    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "MURACAAT_ID")
@@ -68,28 +50,5 @@ public class Muracaat {
     @Column(name = "GUNCELLEME_TARIHI")
     private Date guncellemeTarihi;
 
-    @Column(name = "KIMLIK_NO", unique = true, nullable = false)
-    private BigInteger kimlikNo;
-
-    @Column(name = "KISI_ISIM", length = 50)
-    private String kisiIsim;
-
-    @Column(name = "KISI_SOYISIM", length = 50)
-    private String kisiSoyisim;
-
-    @Column(name = "ARSIV_DOSYA_NO")
-    private Integer arsivDosyaNo;
-
-    @Temporal(TemporalType.DATE)
-    @Column(name = "MURACAAT_TARIHI")
-    private Date muracaatTarihi;
-
-    @Column(name = "MAHALLE", length = 100)
-    private String mahalle;
-
-    @Column(name = "SOKAK", length = 100)
-    private String sokak;
-
-    @Column(name = "MURACAAT_DURUM_ID")
-    private Integer muracaatDurumId;
+   
 }

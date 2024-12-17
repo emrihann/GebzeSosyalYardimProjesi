@@ -18,8 +18,22 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class MuracaatBilgiServiceImpl implements MuracaatBilgiService {
-       @Autowired
-    private MuracaatBilgiRepository muracaatBilgiRepository;
+       private final MuracaatBilgiRepository muracaatBilgiRepository;
+
+    @Autowired
+    public MuracaatBilgiServiceImpl(MuracaatBilgiRepository muracaatBilgiRepository) {
+        this.muracaatBilgiRepository = muracaatBilgiRepository;
+    }
+
+    @Override
+    public MuracaatBilgi saveMuracaatBilgi(MuracaatBilgi muracaatBilgi) {
+        return muracaatBilgiRepository.save(muracaatBilgi);
+    }
+
+    @Override
+    public Optional<MuracaatBilgi> getMuracaatBilgiById(Long id) {
+        return muracaatBilgiRepository.findById(id);
+    }
 
     @Override
     public List<MuracaatBilgi> getAllMuracaatBilgi() {
@@ -27,26 +41,7 @@ public class MuracaatBilgiServiceImpl implements MuracaatBilgiService {
     }
 
     @Override
-    public Optional<MuracaatBilgi> getMuracaatBilgiById(Integer id) {
-        return muracaatBilgiRepository.findById(id);
-    }
-
-    @Override
-    public MuracaatBilgi createMuracaatBilgi(MuracaatBilgi muracaatBilgi) {
-        return muracaatBilgiRepository.save(muracaatBilgi);
-    }
-
-    @Override
-    public MuracaatBilgi updateMuracaatBilgi(Integer id, MuracaatBilgi muracaatBilgi) {
-        if (muracaatBilgiRepository.existsById(id)) {
-            muracaatBilgi.setMuracaatBilgiId(id);
-            return muracaatBilgiRepository.save(muracaatBilgi);
-        }
-        return null;
-    }
-
-    @Override
-    public void deleteMuracaatBilgi(Integer id) {
+    public void deleteMuracaatBilgi(Long id) {
         muracaatBilgiRepository.deleteById(id);
     }
 }

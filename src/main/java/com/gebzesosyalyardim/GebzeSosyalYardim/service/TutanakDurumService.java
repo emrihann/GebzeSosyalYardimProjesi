@@ -6,6 +6,7 @@ package com.gebzesosyalyardim.GebzeSosyalYardim.service;
 
 import com.gebzesosyalyardim.GebzeSosyalYardim.entities.TutanakDurum;
 import java.util.List;
+import java.util.Optional;
 
 /**
  *
@@ -13,8 +14,12 @@ import java.util.List;
  */
 public interface TutanakDurumService {
     List<TutanakDurum> getAllTutanakDurum();
-    TutanakDurum getTutanakDurumById(Integer id);
-    TutanakDurum createTutanakDurum(TutanakDurum tutanakDurum);
-    TutanakDurum updateTutanakDurum(Integer id, TutanakDurum tutanakDurum);
-    void deleteTutanakDurum(Integer id);
+
+    Optional<TutanakDurum> getTutanakDurumById(Long id);
+
+    TutanakDurum saveTutanakDurum(TutanakDurum tutanakDurum);
+
+    TutanakDurum updateTutanakDurum(Long id, TutanakDurum tutanakDurum);
+
+    void deleteTutanakDurum(Long id);
 }

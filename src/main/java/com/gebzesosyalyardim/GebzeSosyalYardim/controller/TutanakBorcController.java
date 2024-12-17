@@ -9,6 +9,7 @@ import com.gebzesosyalyardim.GebzeSosyalYardim.service.TutanakBorcService;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,34 +26,40 @@ import org.springframework.web.bind.annotation.RestController;
  * @author emirh
  */
 @RestController
-@RequestMapping("/api/tutanakborc")
+@RequestMapping("/api/borclar")
 public class TutanakBorcController {
-     @Autowired
-    private TutanakBorcService tutanakBorcService;
+    private final TutanakBorcService tutanakBorcService;
 
-    @GetMapping
-    public List<TutanakBorc> getAllTutanakBorc() {
-        return tutanakBorcService.getAllTutanakBorc();
-    }
-
-    @GetMapping("/{id}")
-    public Optional<TutanakBorc> getTutanakBorcById(@PathVariable Integer id) {
-        return tutanakBorcService.getTutanakBorcById(id);
+    @Autowired
+    public TutanakBorcController(TutanakBorcService tutanakBorcService) {
+        this.tutanakBorcService = tutanakBorcService;
     }
 
     @PostMapping
-    public TutanakBorc createTutanakBorc(@RequestBody TutanakBorc tutanakBorc) {
-        return tutanakBorcService.createTutanakBorc(tutanakBorc);
+    public ResponseEntity<TutanakBorc> createBorc(@RequestBody TutanakBorc tutanakBorc) {
+        return ResponseEntity.ok(tutanakBorcService.saveBorc(tutanakBorc));
+    }
+
+    @GetMapping
+    public ResponseEntity<List<TutanakBorc>> getAllBorcs() {
+        return ResponseEntity.ok(tutanakBorcService.getAllBorcs());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<TutanakBorc> getBorcById(@PathVariable Long id) {
+        return tutanakBorcService.getBorcById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @PutMapping("/{id}")
-    public TutanakBorc updateTutanakBorc(@PathVariable Integer id, @RequestBody TutanakBorc tutanakBorc) {
-        return tutanakBorcService.updateTutanakBorc(id, tutanakBorc);
+    public ResponseEntity<TutanakBorc> updateBorc(@PathVariable Long id, @RequestBody TutanakBorc tutanakBorc) {
+        return ResponseEntity.ok(tutanakBorcService.updateBorc(id, tutanakBorc));
     }
 
     @DeleteMapping("/{id}")
-    public void deleteTutanakBorc(@PathVariable Integer id) {
-        tutanakBorcService.deleteTutanakBorc(id);
+    public ResponseEntity<Void> deleteBorc(@PathVariable Long id) {
+        tutanakBorcService.deleteBorc(id);
+        return ResponseEntity.noContent().build();
     }
-    
 }

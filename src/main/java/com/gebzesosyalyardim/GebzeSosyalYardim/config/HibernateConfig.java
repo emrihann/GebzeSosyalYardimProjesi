@@ -22,10 +22,16 @@ public class HibernateConfig {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(EntityManagerFactoryBuilder builder,
                                                                        DataSource dataSource) {
         Map<String, String> properties = new HashMap<>();
+
+        // Set Hibernate-specific properties
         properties.put("hibernate.dialect", "org.hibernate.dialect.OracleDialect");
+        properties.put("hibernate.show_sql", "true"); // Enable SQL logging
+        properties.put("hibernate.format_sql", "true"); // Pretty-print SQL logs
+        properties.put("hibernate.hbm2ddl.auto", "update"); // Auto-update schema, change as needed
+
         return builder
                 .dataSource(dataSource)
-                .packages("com.yourpackage.entities")
+                .packages("com.gebzesosyalyardim.GebzeSosyalYardim.entities") // Scan for JPA entities
                 .properties(properties)
                 .build();
     }

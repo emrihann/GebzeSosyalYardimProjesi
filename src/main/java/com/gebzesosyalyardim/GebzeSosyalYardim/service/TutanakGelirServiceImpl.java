@@ -7,7 +7,6 @@ package com.gebzesosyalyardim.GebzeSosyalYardim.service;
 import com.gebzesosyalyardim.GebzeSosyalYardim.entities.TutanakGelir;
 import com.gebzesosyalyardim.GebzeSosyalYardim.repository.TutanakGelirRepository;
 import java.util.List;
-import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,30 +16,34 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class TutanakGelirServiceImpl implements TutanakGelirService {
-       private TutanakGelirRepository tutanakGelirRepository;
+      @Autowired
+    private TutanakGelirRepository repository;
 
-    @Autowired
-    public TutanakGelirServiceImpl(TutanakGelirRepository tutanakGelirRepository) {
-        
+    @Override
+    public List<TutanakGelir> getAll() {
+        return repository.findAll();
     }
 
     @Override
-    public List<TutanakGelir> findAll() {
-        return tutanakGelirRepository.findAll();
-    }
-
-    @Override
-    public Optional<TutanakGelir> findById(Integer id) {
-        return tutanakGelirRepository.findById(id);
+    public TutanakGelir getById(Long id) {
+        return repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Gelir kaydı bulunamadı: " + id));
     }
 
     @Override
     public TutanakGelir save(TutanakGelir tutanakGelir) {
-        return tutanakGelirRepository.save(tutanakGelir);
+        return repository.save(tutanakGelir);
     }
 
     @Override
-    public void deleteById(Integer id) {
-        tutanakGelirRepository.deleteById(id);
+    public TutanakGelir update(Long id, TutanakGelir tutanakGelir) {
+        TutanakGelir existingRecord = getById(id);
+        tutanakGelir.setGelirId(existingRecord.getGelirId());
+        return repository.save(tutanakGelir);
+    }
+
+    @Override
+    public void delete(Long id) {
+        repository.deleteById(id);
     }
 }

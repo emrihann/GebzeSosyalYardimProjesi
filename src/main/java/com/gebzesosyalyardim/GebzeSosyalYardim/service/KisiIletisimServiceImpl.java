@@ -17,8 +17,12 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class KisiIletisimServiceImpl implements KisiIletisimService {
-     @Autowired
-    private KisiIletisimRepository kisiIletisimRepository;
+     private final KisiIletisimRepository kisiIletisimRepository;
+
+    @Autowired
+    public KisiIletisimServiceImpl(KisiIletisimRepository kisiIletisimRepository) {
+        this.kisiIletisimRepository = kisiIletisimRepository;
+    }
 
     @Override
     public List<KisiIletisim> getAllKisiIletisim() {
@@ -26,23 +30,26 @@ public class KisiIletisimServiceImpl implements KisiIletisimService {
     }
 
     @Override
-    public Optional<KisiIletisim> getKisiIletisimById(Integer id) {
+    public Optional<KisiIletisim> getKisiIletisimById(Long id) {
         return kisiIletisimRepository.findById(id);
     }
 
     @Override
-    public KisiIletisim createKisiIletisim(KisiIletisim kisiIletisim) {
+    public KisiIletisim saveKisiIletisim(KisiIletisim kisiIletisim) {
         return kisiIletisimRepository.save(kisiIletisim);
     }
 
     @Override
-    public KisiIletisim updateKisiIletisim(Integer id, KisiIletisim kisiIletisim) {
-        kisiIletisim.setKisi_iletisim_id(id);
-        return kisiIletisimRepository.save(kisiIletisim);
+    public KisiIletisim updateKisiIletisim(Long id, KisiIletisim kisiIletisim) {
+        if (kisiIletisimRepository.existsById(id)) {
+            kisiIletisim.setKisiIletisimId(id);
+            return kisiIletisimRepository.save(kisiIletisim);
+        }
+        return null;
     }
 
     @Override
-    public void deleteKisiIletisim(Integer id) {
+    public void deleteKisiIletisim(Long id) {
         kisiIletisimRepository.deleteById(id);
     }
 }

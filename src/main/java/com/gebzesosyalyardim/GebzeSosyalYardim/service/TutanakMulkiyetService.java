@@ -6,7 +6,7 @@ package com.gebzesosyalyardim.GebzeSosyalYardim.service;
 
 import com.gebzesosyalyardim.GebzeSosyalYardim.entities.TutanakMulkiyet;
 import java.util.List;
-import java.util.Optional;
+
 
 
 
@@ -15,8 +15,9 @@ import java.util.Optional;
  * @author emirh
  */
 public interface TutanakMulkiyetService {
-    List<TutanakMulkiyet> findAll();
-    Optional<TutanakMulkiyet> findById(Integer id);
+    List<TutanakMulkiyet> getAll();
+    TutanakMulkiyet getById(Long id);
     TutanakMulkiyet save(TutanakMulkiyet tutanakMulkiyet);
-    void deleteById(Integer id);
+    TutanakMulkiyet update(Long id, TutanakMulkiyet tutanakMulkiyet);
+    void delete(Long id);
 }

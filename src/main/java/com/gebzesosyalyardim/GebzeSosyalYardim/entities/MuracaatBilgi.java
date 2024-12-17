@@ -9,11 +9,16 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import java.sql.Timestamp;
 import java.util.Date;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  *
@@ -22,43 +27,31 @@ import lombok.Data;
 @Entity
 @Data
 @Table(name="MURACAAT_BILGI")
+@NoArgsConstructor
+@AllArgsConstructor
 public class MuracaatBilgi {
-
-    public MuracaatBilgi() {
-    }
-
-    public MuracaatBilgi(Integer muracaatBilgiId, Integer arsivDosyaNo, String aciklama, Integer aktif, Date kayitTarih, Date guncellemeTarih) {
-        this.muracaatBilgiId = muracaatBilgiId;
-        this.arsivDosyaNo = arsivDosyaNo;
-        this.aciklama = aciklama;
-        this.aktif = aktif;
-        this.kayitTarih = kayitTarih;
-        this.guncellemeTarih = guncellemeTarih;
-    }
-    
      @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "MURACAAT_BILGI_SEQ")
+    @SequenceGenerator(name = "MURACAAT_BILGI_SEQ", sequenceName = "GEBZEADMIN.ISEQ$$_88411", allocationSize = 1)
     @Column(name = "MURACAAT_BILGI_ID")
-    private Integer muracaatBilgiId;
+    private Long muracaatBilgiId;
 
-    @Column(name = "ARSIV_DOSYA_NO")
-    private Integer arsivDosyaNo;
+    @Column(name = "ARSIV_DOSYA_NO", nullable = true)
+    private Long arsivDosyaNo;
 
-    @Column(name = "ACIKLAMA", length = 255)
+    @Lob
+    @Column(name = "ACIKLAMA", nullable = true)
     private String aciklama;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "MURACAAT_TARIHI")
-    private Date muracaatTarihi = new Date();
+    @Column(name = "MURACAAT_TARIHI", nullable = true)
+    private Timestamp muracaatTarihi;
 
-    @Column(name = "AKTIF")
+    @Column(name = "KAYIT_TARIHI", nullable = true)
+    private Timestamp kayitTarihi;
+
+    @Column(name = "AKTIF", nullable = true)
     private Integer aktif;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "KAYIT_TARIHI")
-    private Date kayitTarih;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "GUNCELLEME_TARIHI")
-    private Date guncellemeTarih;
+    @Column(name = "GUNCELLEME_TARIHI", nullable = true)
+    private Timestamp guncellemeTarihi;
 }

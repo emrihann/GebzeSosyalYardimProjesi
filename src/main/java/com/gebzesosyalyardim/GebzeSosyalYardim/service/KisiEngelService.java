@@ -14,8 +14,12 @@ import java.util.Optional;
  */
 public interface KisiEngelService {
     List<KisiEngel> getAllKisiEngel();
-    Optional<KisiEngel> getKisiEngelById(Integer id);
-    KisiEngel createKisiEngel(KisiEngel kisiEngel);
-    KisiEngel updateKisiEngel(Integer id, KisiEngel kisiEngel);
-    void deleteKisiEngel(Integer id);
+
+    Optional<KisiEngel> getKisiEngelById(Long id);
+
+    KisiEngel saveKisiEngel(KisiEngel kisiEngel);
+
+    KisiEngel updateKisiEngel(Long id, KisiEngel kisiEngel);
+
+    void deleteKisiEngel(Long id);
 }

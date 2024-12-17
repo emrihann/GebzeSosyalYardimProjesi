@@ -9,11 +9,12 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
-import java.util.Date;
+import java.time.ZonedDateTime;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  *
@@ -22,75 +23,56 @@ import lombok.Data;
 @Entity
 @Data
 @Table(name="TUTANAK_MULKIYET")
+@NoArgsConstructor
+@AllArgsConstructor
 public class TutanakMulkiyet {
-
-    public TutanakMulkiyet() {
-    }
-
-    public TutanakMulkiyet(Integer mulkiyetId, Integer mulkiyetSiraNo, Integer evDurumId, Float kiraMiktar, Integer yakacakTipId, Integer kiradaEvSayisi, String arabaModel, String gayrimenkulTur, Integer evTipId, Date guncellemeTarihi, String evDurumIsim, String yakacakTipIsim, String evTipIsim) {
-        this.mulkiyetId = mulkiyetId;
-        this.mulkiyetSiraNo = mulkiyetSiraNo;
-        this.evDurumId = evDurumId;
-        this.kiraMiktar = kiraMiktar;
-        this.yakacakTipId = yakacakTipId;
-        this.kiradaEvSayisi = kiradaEvSayisi;
-        this.arabaModel = arabaModel;
-        this.gayrimenkulTur = gayrimenkulTur;
-        this.evTipId = evTipId;
-        this.guncellemeTarihi = guncellemeTarihi;
-        this.evDurumIsim = evDurumIsim;
-        this.yakacakTipIsim = yakacakTipIsim;
-        this.evTipIsim = evTipIsim;
-    }
       @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "MULKIYET_ID")
-    private Integer mulkiyetId;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "mulkiyet_seq")
+    @SequenceGenerator(name = "mulkiyet_seq", sequenceName = "GEBZEADMIN.ISEQ$$_88451", allocationSize = 1)
+    private Long mulkiyetId;
 
     @Column(name = "MULKIYET_SIRA_NO")
-    private Integer mulkiyetSiraNo;
+    private Long mulkiyetSiraNo;
 
-    @Column(name = "EV_DURUM_ID")
-    private Integer evDurumId;
+    @Column(name = "EV_DURUM_ID", nullable = false)
+    private Long evDurumId;
 
     @Column(name = "KIRA_MIKTAR")
-    private Float kiraMiktar;
+    private Double kiraMiktar = 0.0;
 
     @Column(name = "YAKACAK_TIP_ID")
-    private Integer yakacakTipId;
-
-    @Column(name = "KIRADA_EV_VAR_MI", columnDefinition = "int default 0")
-    private Integer kiradaEvVarMi = 0;
+    private Long yakacakTipId;
 
     @Column(name = "KIRADA_EV_SAYISI")
-    private Integer kiradaEvSayisi;
+    private Long kiradaEvSayisi = 0L;
 
-    @Column(name = "ARABA_VAR_MI", columnDefinition = "int default 0")
-    private Integer arabaVarMi = 0;
+    @Column(name = "ARABA_VAR_MI", nullable = false)
+    private Integer arabaVarMi;
 
     @Column(name = "ARABA_MODEL", length = 100)
     private String arabaModel;
 
-    @Column(name = "GAYRIMENKUL_VAR_MI", columnDefinition = "int default 0")
-    private Integer gayrimenkulVarMi = 0;
+    @Column(name = "GAYRIMENKUL_VAR_MI", nullable = false)
+    private Integer gayrimenkulVarMi;
 
     @Column(name = "GAYRIMENKUL_TUR", length = 100)
     private String gayrimenkulTur;
 
-    @Column(name = "EV_TIP_ID")
-    private Integer evTipId;
+    @Column(name = "EV_TIP_ID", nullable = false)
+    private Long evTipId;
 
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "GUNCELLEME_TARIHI")
-    private Date guncellemeTarihi;
+    private ZonedDateTime guncellemeTarihi;
+
+    @Column(name = "KIRADA_EV_VAR_MI", nullable = false)
+    private Long kiradaEvVarMi = 0L;
 
     @Column(name = "EV_DURUM_ISIM", length = 100)
     private String evDurumIsim;
 
-    @Column(name = "YAKACAK_TIP_ISIM", length = 100)
-    private String yakacakTipIsim;
-
     @Column(name = "EV_TIP_ISIM", length = 100)
     private String evTipIsim;
 
+    @Column(name = "YAKACAK_TIP_ISIM", length = 100)
+    private String yakacakTipIsim;
 }

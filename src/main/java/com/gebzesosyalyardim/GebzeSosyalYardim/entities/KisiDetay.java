@@ -9,58 +9,50 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
-import java.util.Date;
+import java.time.ZonedDateTime;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  *
  * @author emirh
  */
 @Entity
-@Table(name = "KisiDetay")
-@Data  // Lombok @Data anotasyonu ekledik
+@Table(name = "KISI_DETAY")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class KisiDetay {
+     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "kisi_detay_seq")
+    @SequenceGenerator(name = "kisi_detay_seq", sequenceName = "GEBZEADMIN.ISEQ$$_87924", allocationSize = 1)
+    @Column(name = "DETAY_ID")
+    private Long detayId;
 
-    public KisiDetay() {
-    }
-    
+    @Column(name = "KISI_ILETISIM_ID", nullable = false)
+    private Long kisiIletisimId;
 
-    public KisiDetay(Integer detayId, Integer kisiIletisimId, Integer kisiAdresId, Integer kisiEgitimId, Integer kisiEngelId, Integer meslekId, Date guncellemeTarihi, Integer askerlikId) {
-        this.detayId = detayId;
-        this.kisiIletisimId = kisiIletisimId;
-        this.kisiAdresId = kisiAdresId;
-        this.kisiEgitimId = kisiEgitimId;
-        this.kisiEngelId = kisiEngelId;
-        this.meslekId = meslekId;
-        this.guncellemeTarihi = guncellemeTarihi;
-        this.askerlikId = askerlikId;
-    }
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "detay_id")
-    private Integer detayId;
+    @Column(name = "KISI_ADRES_ID", nullable = false)
+    private Long kisiAdresId;
 
-    @Column(name = "kisi_iletisim_id")
-    private Integer kisiIletisimId;
+    @Column(name = "KISI_EGITIM_ID", nullable = false)
+    private Long kisiEgitimId;
 
-    @Column(name = "kisi_adres_id")
-    private Integer kisiAdresId;
+    @Column(name = "KISI_ENGEL_ID")
+    private Long kisiEngelId;
 
-    @Column(name = "kisi_egitim_id")
-    private Integer kisiEgitimId;
+    @Column(name = "MESLEK_ID")
+    private Long meslekId;
 
-    @Column(name = "kisi_engel_id")
-    private Integer kisiEngelId;
+    @Column(name = "GUNCELLEME_TARIHI")
+    private ZonedDateTime guncellemeTarihi;
 
-    @Column(name = "meslek_id")
-    private Integer meslekId;
+    @Column(name = "ASKERLIK_ID")
+    private Long askerlikId;
 
-    @Column(name = "guncelleme_tarihi")
-    private Date guncellemeTarihi;
-
-    @Column(name = "askerlik_id")
-    private Integer askerlikId;
-
+    @Column(name = "KISI_ID")
+    private Long kisiId;
 }

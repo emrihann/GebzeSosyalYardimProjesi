@@ -13,7 +13,9 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import java.util.Date;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  *
@@ -21,19 +23,10 @@ import lombok.Data;
  */
 @Entity
 @Data
-@Table(name="MURACAAR_DURUM")
+@Table(name="MURACAAT_DURUM")
+@NoArgsConstructor
+@AllArgsConstructor
 public class MuracaatDurum {
-
-    public MuracaatDurum() {
-    }
-
-    public MuracaatDurum(Integer durumId, String durum, Integer aktif, Date kayitTarihi, Integer ekleyenKisiId) {
-        this.durumId = durumId;
-        this.durum = durum;
-        this.aktif = aktif;
-        this.kayitTarihi = kayitTarihi;
-        this.ekleyenKisiId = ekleyenKisiId;
-    }
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -50,6 +43,6 @@ public class MuracaatDurum {
     @Column(name = "KAYIT_TARIHI")
     private Date kayitTarihi;
 
-    @Column(name = "EKLEYEN_KISI_ID")
-    private Integer ekleyenKisiId;
+    @Column(name = "EKLEYEN_KULLANICI_ID")
+    private Integer ekleyenKullanıcıId;
 }

@@ -25,10 +25,14 @@ import org.springframework.web.bind.annotation.RestController;
  * @author emirh
  */
 @RestController
-@RequestMapping("/api/kisi-engel")
+@RequestMapping("/kisi-engel")
 public class KisiEngelController {
+    private final KisiEngelService kisiEngelService;
+
     @Autowired
-    private KisiEngelService kisiEngelService;
+    public KisiEngelController(KisiEngelService kisiEngelService) {
+        this.kisiEngelService = kisiEngelService;
+    }
 
     @GetMapping
     public List<KisiEngel> getAllKisiEngel() {
@@ -36,25 +40,26 @@ public class KisiEngelController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<KisiEngel> getKisiEngelById(@PathVariable Integer id) {
+    public ResponseEntity<KisiEngel> getKisiEngelById(@PathVariable Long id) {
         Optional<KisiEngel> kisiEngel = kisiEngelService.getKisiEngelById(id);
         return kisiEngel.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    public KisiEngel createKisiEngel(@RequestBody KisiEngel kisiEngel) {
-        return kisiEngelService.createKisiEngel(kisiEngel);
+    public ResponseEntity<KisiEngel> createKisiEngel(@RequestBody KisiEngel kisiEngel) {
+        KisiEngel createdKisiEngel = kisiEngelService.saveKisiEngel(kisiEngel);
+        return ResponseEntity.ok(createdKisiEngel);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<KisiEngel> updateKisiEngel(@PathVariable Integer id, @RequestBody KisiEngel kisiEngel) {
+    public ResponseEntity<KisiEngel> updateKisiEngel(@PathVariable Long id, @RequestBody KisiEngel kisiEngel) {
         KisiEngel updatedKisiEngel = kisiEngelService.updateKisiEngel(id, kisiEngel);
-        return ResponseEntity.ok(updatedKisiEngel);
+        return updatedKisiEngel != null ? ResponseEntity.ok(updatedKisiEngel) : ResponseEntity.notFound().build();
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteKisiEngel(@PathVariable Integer id) {
+    public ResponseEntity<Void> deleteKisiEngel(@PathVariable Long id) {
         kisiEngelService.deleteKisiEngel(id);
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        return ResponseEntity.noContent().build();
     }
 }

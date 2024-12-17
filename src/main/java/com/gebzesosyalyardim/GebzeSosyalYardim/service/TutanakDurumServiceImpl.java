@@ -17,8 +17,12 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class TutanakDurumServiceImpl implements TutanakDurumService {
-      @Autowired
-    private TutanakDurumRepository tutanakDurumRepository;
+       private final TutanakDurumRepository tutanakDurumRepository;
+
+    @Autowired
+    public TutanakDurumServiceImpl(TutanakDurumRepository tutanakDurumRepository) {
+        this.tutanakDurumRepository = tutanakDurumRepository;
+    }
 
     @Override
     public List<TutanakDurum> getAllTutanakDurum() {
@@ -26,29 +30,26 @@ public class TutanakDurumServiceImpl implements TutanakDurumService {
     }
 
     @Override
-    public TutanakDurum getTutanakDurumById(Integer id) {
-        return tutanakDurumRepository.findById(id).orElse(null);
+    public Optional<TutanakDurum> getTutanakDurumById(Long id) {
+        return tutanakDurumRepository.findById(id);
     }
 
     @Override
-    public TutanakDurum createTutanakDurum(TutanakDurum tutanakDurum) {
+    public TutanakDurum saveTutanakDurum(TutanakDurum tutanakDurum) {
         return tutanakDurumRepository.save(tutanakDurum);
     }
 
     @Override
-    public TutanakDurum updateTutanakDurum(Integer id, TutanakDurum tutanakDurum) {
-        Optional<TutanakDurum> existingTutanakDurum = tutanakDurumRepository.findById(id);
-        if (existingTutanakDurum.isPresent()) {
-            TutanakDurum updatedTutanakDurum = existingTutanakDurum.get();
-            updatedTutanakDurum.setTutanakIsim(tutanakDurum.getTutanakIsim());
-            updatedTutanakDurum.setAktiflik(tutanakDurum.getAktiflik());
-            return tutanakDurumRepository.save(updatedTutanakDurum);
+    public TutanakDurum updateTutanakDurum(Long id, TutanakDurum tutanakDurum) {
+        if (tutanakDurumRepository.existsById(id)) {
+            tutanakDurum.setDurumId(id);
+            return tutanakDurumRepository.save(tutanakDurum);
         }
-        return null;
+        return null; // Id bulunmazsa null döndürülür
     }
 
     @Override
-    public void deleteTutanakDurum(Integer id) {
+    public void deleteTutanakDurum(Long id) {
         tutanakDurumRepository.deleteById(id);
     }
 }

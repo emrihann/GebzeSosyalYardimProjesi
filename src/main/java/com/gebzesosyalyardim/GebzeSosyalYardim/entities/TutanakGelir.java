@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.gebzesosyalyardim.GebzeSosyalYardim.entities;
 
 import jakarta.persistence.Column;
@@ -9,90 +5,80 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
-import java.util.Date;
+import java.time.ZonedDateTime;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-/**
- *
- * @author emirh
- */
+
 @Entity
 @Data
-@Table(name="TUTANAK_GELIR")
+@Table(name = "TUTANAK_GELIR")
+@NoArgsConstructor
+@AllArgsConstructor
 public class TutanakGelir {
 
-    public TutanakGelir() {
-    }
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "gelir_seq")
+    @SequenceGenerator(name = "gelir_seq", sequenceName = "GEBZEADMIN.ISEQ$$_88443", allocationSize = 1)
+    private Long gelirId;
 
-    public TutanakGelir(Integer gelirId, Date kayitTarihi, Date guncellemeTarihi) {
-        this.gelirId = gelirId;
-        this.kayitTarihi = kayitTarihi;
-        this.guncellemeTarihi = guncellemeTarihi;
-    }
-     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "GELIR_ID")
-    private Integer gelirId;
+    @Column(name = "YASLILIK", nullable = false)
+    private Double yaslilik = 0.0;
 
-    @Column(name = "YASLILIK", columnDefinition = "float default 0")
-    private float yaslilik = 0;
+    @Column(name = "ENGELLI", nullable = false)
+    private Double engelli = 0.0;
 
-    @Column(name = "ENGELLI", columnDefinition = "float default 0")
-    private float engelli = 0;
+    @Column(name = "ENGELLI_YAKINI", nullable = false)
+    private Double engelliYakini = 0.0;
 
-    @Column(name = "ENGELLI_YAKINI", columnDefinition = "float default 0")
-    private float engelliYakini = 0;
+    @Column(name = "YETIM_AYLIGI", nullable = false)
+    private Double yetimAyligi = 0.0;
 
-    @Column(name = "YETIM_AYLIGI", columnDefinition = "float default 0")
-    private float yetimAyligi = 0;
+    @Column(name = "EMEKLI_MAASI", nullable = false)
+    private Double emekliMaasi = 0.0;
 
-    @Column(name = "EMEKLI_MAASI", columnDefinition = "float default 0")
-    private float emekliMaasi = 0;
+    @Column(name = "EVDE_BAKIM_PARASI", nullable = false)
+    private Double evdeBakimParasi = 0.0;
 
-    @Column(name = "EVDE_BAKIM_PARASI", columnDefinition = "float default 0")
-    private float evdeBakimParasi = 0;
+    @Column(name = "DUL_MAASI", nullable = false)
+    private Double dulMaasi = 0.0;
 
-    @Column(name = "DUL_MAASI", columnDefinition = "float default 0")
-    private float dulMaasi = 0;
+    @Column(name = "ISSIZLIK_MAASI", nullable = false)
+    private Double issizlikMaasi = 0.0;
 
-    @Column(name = "ISSIZLIK_MAASI", columnDefinition = "float default 0")
-    private float issizlikMaasi = 0;
+    @Column(name = "ASKER_MAASI", nullable = false)
+    private Double askerMaasi = 0.0;
 
-    @Column(name = "ASKER_MAASI", columnDefinition = "float default 0")
-    private float askerMaasi = 0;
+    @Column(name = "KIRA_MAASI", nullable = false)
+    private Double kiraMaasi = 0.0;
 
-    @Column(name = "KIRA_MAASI", columnDefinition = "float default 0")
-    private float kiraMaasi = 0;
+    @Column(name = "KAYMAKAMLIK", nullable = false)
+    private Double kaymakamlik = 0.0;
 
-    @Column(name = "KAYMAKAMLIK", columnDefinition = "float default 0")
-    private float kaymakamlik = 0;
+    @Column(name = "SOSYAL_HIZMETLER", nullable = false)
+    private Double sosyalHizmetler = 0.0;
 
-    @Column(name = "SOSYAL_HIZMETLER", columnDefinition = "float default 0")
-    private float sosyalHizmetler = 0;
+    @Column(name = "BUYUKSEHIR", nullable = false)
+    private Double buyuksehir = 0.0;
 
-    @Column(name = "BUYUKSEHIR", columnDefinition = "float default 0")
-    private float buyuksehir = 0;
+    @Column(name = "OZEL_VAKIF", nullable = false)
+    private Double ozelVakif = 0.0;
 
-    @Column(name = "OZEL_VAKIF", columnDefinition = "float default 0")
-    private float ozelVakif = 0;
+    @Column(name = "DIGER", nullable = false)
+    private Double diger = 0.0;
 
-    @Column(name = "DIGER", columnDefinition = "float default 0")
-    private float diger = 0;
+    @Column(name = "AKTIF", nullable = false)
+    private Integer aktif = 1;
 
-    @Column(name = "DIGER_ACIKLAMA", length = 255)
-    private String digerAciklama = "";
+    @Column(name = "KAYIT_TARIHI", nullable = false)
+    private ZonedDateTime kayitTarihi;
 
-    @Column(name = "AKTIF", columnDefinition = "int default 0")
-    private Integer aktif = 0;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "KAYIT_TARIHI")
-    private Date kayitTarihi;
-
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "GUNCELLEME_TARIHI")
-    private Date guncellemeTarihi;
+    private ZonedDateTime guncellemeTarihi;
+
+    @Column(name = "DIGER_ACIKLAMA", length = 1000)
+    private String digerAciklama;
 }

@@ -7,7 +7,6 @@ package com.gebzesosyalyardim.GebzeSosyalYardim.service;
 import com.gebzesosyalyardim.GebzeSosyalYardim.entities.TutanakMulkiyet;
 import com.gebzesosyalyardim.GebzeSosyalYardim.repository.TutanakMulkiyetRepository;
 import java.util.List;
-import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,30 +16,34 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class TutanakMulkiyetServiceImpl implements TutanakMulkiyetService {
-       private TutanakMulkiyetRepository tutanakMulkiyetRepository;
+       @Autowired
+    private TutanakMulkiyetRepository repository;
 
-    @Autowired
-    public TutanakMulkiyetServiceImpl(TutanakMulkiyetRepository tutanakMulkiyetRepository) {
-        
+    @Override
+    public List<TutanakMulkiyet> getAll() {
+        return repository.findAll();
     }
 
     @Override
-    public List<TutanakMulkiyet> findAll() {
-        return tutanakMulkiyetRepository.findAll();
-    }
-
-    @Override
-    public Optional<TutanakMulkiyet> findById(Integer id) {
-        return tutanakMulkiyetRepository.findById(id);
+    public TutanakMulkiyet getById(Long id) {
+        return repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Mülkiyet kaydı bulunamadı: " + id));
     }
 
     @Override
     public TutanakMulkiyet save(TutanakMulkiyet tutanakMulkiyet) {
-        return tutanakMulkiyetRepository.save(tutanakMulkiyet);
+        return repository.save(tutanakMulkiyet);
     }
 
     @Override
-    public void deleteById(Integer id) {
-        tutanakMulkiyetRepository.deleteById(id);
+    public TutanakMulkiyet update(Long id, TutanakMulkiyet tutanakMulkiyet) {
+        TutanakMulkiyet existingRecord = getById(id);
+        tutanakMulkiyet.setMulkiyetId(existingRecord.getMulkiyetId());
+        return repository.save(tutanakMulkiyet);
+    }
+
+    @Override
+    public void delete(Long id) {
+        repository.deleteById(id);
     }
 }

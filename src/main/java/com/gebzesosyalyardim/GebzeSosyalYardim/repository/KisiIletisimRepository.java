@@ -13,6 +13,6 @@ import org.springframework.stereotype.Repository;
  * @author emirh
  */
 @Repository
-public interface KisiIletisimRepository extends JpaRepository < KisiIletisim,Integer> {
+public interface KisiIletisimRepository extends JpaRepository<KisiIletisim, Long> {
     
 }

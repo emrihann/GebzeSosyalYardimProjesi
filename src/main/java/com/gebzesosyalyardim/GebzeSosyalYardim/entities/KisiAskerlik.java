@@ -9,65 +9,71 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.ZonedDateTime;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  *
  * @author emirh
  */
-@Data
 @Entity
-@Table(name = "kisi_askerlik")
+@Data
+@Table(name = "KISI_ASKERLIK")
+@NoArgsConstructor
+@AllArgsConstructor
 public class KisiAskerlik {
-
-    public KisiAskerlik() {
-    }
-
-    public KisiAskerlik(Integer askerlik_id, Integer asker_hukumlu, Integer sure, String aciklama, Date baslangic_tarihi, Date bitis_tarihi, Date kayit_tarihi, Date guncelleme_tarihi) {
-        this.askerlik_id = askerlik_id;
-        this.asker_hukumlu = asker_hukumlu;
-        this.sure = sure;
-        this.aciklama = aciklama;
-        this.baslangic_tarihi = baslangic_tarihi;
-        this.bitis_tarihi = bitis_tarihi;
-        this.kayit_tarihi = kayit_tarihi;
-        this.guncelleme_tarihi = guncelleme_tarihi;
-    }
-    
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "askerlik_id")
-    private Integer askerlik_id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "askerlik_seq")
+    @SequenceGenerator(name = "askerlik_seq", sequenceName = "GEBZEADMIN.ISEQ$$_88373", allocationSize = 1)
+    private Long askerlikId;
 
-    @Column(name = "asker_hukumlu")
-    private Integer asker_hukumlu;
+    @Column(name = "ASKER_HUKUMLU", nullable = false)
+    private Integer askerHukumlu;
 
-    @Column(name = "sure")
+    @Column(name = "SURE", nullable = false)
     private Integer sure;
 
-    @Column(name = "aciklama")
-    private String aciklama;
+    @Column(name = "ACIKLAMA", nullable = false, length = 1000)
+    private String aciklama = "";
 
-    @Column(name = "baslangic_tarihi")
-    @Temporal(TemporalType.DATE)
-    private Date baslangic_tarihi;
+    @Column(name = "BASLANGIC_TARIHI", nullable = false)
+    private LocalDate baslangicTarihi;
 
-    @Column(name = "bitis_tarihi")
-    @Temporal(TemporalType.DATE)
-    private Date bitis_tarihi;
+    @Column(name = "BITIS_TARIHI", nullable = false)
+    private LocalDate bitisTarihi;
 
-    @Column(name = "aktif")
+    @Column(name = "AKTIF", nullable = false)
     private Integer aktif = 1;
 
-    @Column(name = "kayit_tarihi")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date kayit_tarihi;
+    @Column(name = "KAYIT_TARIHI", nullable = false)
+    private ZonedDateTime kayitTarihi;
 
-    @Column(name = "guncelleme_tarihi")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date guncelleme_tarihi;
+    @Column(name = "GUNCELLEME_TARIHI")
+    private ZonedDateTime guncellemeTarihi;
+
+    @Column(name = "DIGER")
+    private Float diger;
+
+    @Column(name = "DIGER_ACIKLAMA", length = 255)
+    private String digerAciklama;
+
+    @Column(name = "DOGALGAZ")
+    private Float dogalgaz;
+
+    @Column(name = "ELEKTRIK")
+    private Float elektrik;
+
+    @Column(name = "KIRA")
+    private Float kira;
+
+    @Column(name = "KREDI_KARTI")
+    private Float krediKarti;
+
+    @Column(name = "SU")
+    private Float su;
 }

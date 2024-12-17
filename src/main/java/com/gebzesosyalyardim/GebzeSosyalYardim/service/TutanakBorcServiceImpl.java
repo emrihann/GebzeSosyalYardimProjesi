@@ -18,37 +18,46 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class TutanakBorcServiceImpl implements TutanakBorcService {
+    private final TutanakBorcRepository tutanakBorcRepository;
+
     @Autowired
-    private TutanakBorcRepository tutanakBorcRepository;
-
-    @Override
-    public List<TutanakBorc> getAllTutanakBorc() {
-        return tutanakBorcRepository.findAll();
+    public TutanakBorcServiceImpl(TutanakBorcRepository tutanakBorcRepository) {
+        this.tutanakBorcRepository = tutanakBorcRepository;
     }
 
     @Override
-    public Optional<TutanakBorc> getTutanakBorcById(Integer id) {
-        return tutanakBorcRepository.findById(id);
-    }
-
-    @Override
-    public TutanakBorc createTutanakBorc(TutanakBorc tutanakBorc) {
+    public TutanakBorc saveBorc(TutanakBorc tutanakBorc) {
         return tutanakBorcRepository.save(tutanakBorc);
     }
 
     @Override
-    public TutanakBorc updateTutanakBorc(Integer id, TutanakBorc tutanakBorc) {
-        if (tutanakBorcRepository.existsById(id)) {
-            tutanakBorc.setBorcId(id);
-            return tutanakBorcRepository.save(tutanakBorc);
-        }
-        return null;
+    public List<TutanakBorc> getAllBorcs() {
+        return tutanakBorcRepository.findAll();
     }
 
     @Override
-    public void deleteTutanakBorc(Integer id) {
-        tutanakBorcRepository.deleteById(id);
+    public Optional<TutanakBorc> getBorcById(Long id) {
+        return tutanakBorcRepository.findById(id);
     }
 
-   
+    @Override
+    public TutanakBorc updateBorc(Long id, TutanakBorc updatedBorc) {
+        return tutanakBorcRepository.findById(id)
+                .map(existingBorc -> {
+                    existingBorc.setElektrik(updatedBorc.getElektrik());
+                    existingBorc.setSu(updatedBorc.getSu());
+                    existingBorc.setDogalgaz(updatedBorc.getDogalgaz());
+                    existingBorc.setKira(updatedBorc.getKira());
+                    existingBorc.setKrediKarti(updatedBorc.getKrediKarti());
+                    existingBorc.setDiger(updatedBorc.getDiger());
+                    existingBorc.setDigerAciklama(updatedBorc.getDigerAciklama());
+                    existingBorc.setGuncellemeTarihi(updatedBorc.getGuncellemeTarihi());
+                    return tutanakBorcRepository.save(existingBorc);
+                }).orElseThrow(() -> new RuntimeException("Borc not found with id: " + id));
+    }
+
+    @Override
+    public void deleteBorc(Long id) {
+        tutanakBorcRepository.deleteById(id);
+    }
 }

@@ -13,7 +13,9 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import java.util.Date;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  *
@@ -22,29 +24,23 @@ import lombok.Data;
 @Entity
 @Data
 @Table(name="YARDIM_TUR")
+@NoArgsConstructor
+@AllArgsConstructor
 public class YardimTur {
 
-    public YardimTur() {
-    }
-
-    public YardimTur(Integer tur_id, String tur, Date kayit_tarihi, Integer aktif) {
-        this.tur_id = tur_id;
-        this.tur = tur;
-        this.kayit_tarihi = kayit_tarihi;
-        this.aktif = aktif;
-    }
+  
      @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "tur_id")
+    @Column(name = "TUR_ID")
     private Integer tur_id;
 
-    @Column(name = "tur", length = 100, nullable = false)
+    @Column(name = "TUR", length = 100, nullable = false)
     private String tur;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "kayit_tarihi", nullable = false, updatable = false)
+    @Column(name = "KAYIT_TARIHI", nullable = false, updatable = false)
     private Date kayit_tarihi;
 
-    @Column(name = "aktif", nullable = false)
+    @Column(name = "AKTIF", nullable = false)
     private Integer aktif;
 }

@@ -13,7 +13,9 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import java.util.Date;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  *
@@ -22,33 +24,24 @@ import lombok.Data;
 @Entity
 @Data
 @Table(name="YARDIM_STATU")
+@NoArgsConstructor
+@AllArgsConstructor
 public class YardimStatu {
-
-    public YardimStatu() {
-    }
-
-    public YardimStatu(Integer statu_id, String statu_isim, Date kayit_tarihi, Integer aktif, Date guncelleme_tarihi) {
-        this.statu_id = statu_id;
-        this.statu_isim = statu_isim;
-        this.kayit_tarihi = kayit_tarihi;
-        this.aktif = aktif;
-        this.guncelleme_tarihi = guncelleme_tarihi;
-    }
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name="statu_id")
+    @Column(name="STATU_ID")
     private Integer statu_id;
     
-    @Column(name="statu_isim",length=100,nullable=false)
+    @Column(name="STATU_ISIM",length=100,nullable=false)
     private String statu_isim;
     
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name="kayit_tarihi",nullable=false,updatable=false)
+    @Column(name="KAYIT_TARIHI",nullable=false,updatable=false)
     private Date kayit_tarihi;
     
-    @Column(name="aktif",nullable=false)
+    @Column(name="AKTIF",nullable=false)
     private Integer aktif;
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name="guncelleme_tarihi")
+    @Column(name="GUNCELLEME_TARIHI")
     private Date guncelleme_tarihi;
 }

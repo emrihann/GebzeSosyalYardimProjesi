@@ -10,7 +10,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  *
@@ -19,16 +21,9 @@ import lombok.Data;
 @Entity
 @Data
 @Table(name="YAKINLIK")
+@NoArgsConstructor
+@AllArgsConstructor
 public class Yakinlik {
-
-    public Yakinlik() {
-    }
-
-    public Yakinlik(Integer yakinlikId, String yakinlikIsim, Integer aktiflik) {
-        this.yakinlikId = yakinlikId;
-        this.yakinlikIsim = yakinlikIsim;
-        this.aktiflik = aktiflik;
-    }
      @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "yakinlik_id")

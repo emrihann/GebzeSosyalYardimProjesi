@@ -23,64 +23,34 @@ import org.springframework.web.bind.annotation.RestController;
  * @author emirh
  */
 @RestController
-@RequestMapping("/api/tutanakmulkiyet")
+@RequestMapping("/api/tutanakMulkiyet")
 public class TutanakMulkiyetController {
-     private TutanakMulkiyetService tutanakMulkiyetService;
-
-    @Autowired
-    public TutanakMulkiyetController(TutanakMulkiyetService tutanakMulkiyetService) {
-        this.tutanakMulkiyetService = tutanakMulkiyetService;
-    }
+     @Autowired
+    private TutanakMulkiyetService tutanakMulkiyetService;
 
     @GetMapping
-    public List<TutanakMulkiyet> getAllTutanakMulkiyet() {
-        return tutanakMulkiyetService.findAll();
+    public ResponseEntity<List<TutanakMulkiyet>> getAll() {
+        return ResponseEntity.ok(tutanakMulkiyetService.getAll());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<TutanakMulkiyet> getTutanakMulkiyetById(@PathVariable Integer id) {
-        return tutanakMulkiyetService.findById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+    public ResponseEntity<TutanakMulkiyet> getById(@PathVariable Long id) {
+        return ResponseEntity.ok(tutanakMulkiyetService.getById(id));
     }
 
     @PostMapping
-    public TutanakMulkiyet createTutanakMulkiyet(@RequestBody TutanakMulkiyet tutanakMulkiyet) {
-        return tutanakMulkiyetService.save(tutanakMulkiyet);
+    public ResponseEntity<TutanakMulkiyet> create(@RequestBody TutanakMulkiyet tutanakMulkiyet) {
+        return ResponseEntity.ok(tutanakMulkiyetService.save(tutanakMulkiyet));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<TutanakMulkiyet> updateTutanakMulkiyet(@PathVariable Integer id, @RequestBody TutanakMulkiyet tutanakDetails) {
-        return tutanakMulkiyetService.findById(id)
-                .map(existingTutanak -> {
-                    existingTutanak.setMulkiyetSiraNo(tutanakDetails.getMulkiyetSiraNo());
-                    existingTutanak.setEvDurumId(tutanakDetails.getEvDurumId());
-                    existingTutanak.setKiraMiktar(tutanakDetails.getKiraMiktar());
-                    existingTutanak.setYakacakTipId(tutanakDetails.getYakacakTipId());
-                    existingTutanak.setKiradaEvVarMi(tutanakDetails.getKiradaEvVarMi());
-                    existingTutanak.setKiradaEvSayisi(tutanakDetails.getKiradaEvSayisi());
-                    existingTutanak.setArabaVarMi(tutanakDetails.getArabaVarMi());
-                    existingTutanak.setArabaModel(tutanakDetails.getArabaModel());
-                    existingTutanak.setGayrimenkulVarMi(tutanakDetails.getGayrimenkulVarMi());
-                    existingTutanak.setGayrimenkulTur(tutanakDetails.getGayrimenkulTur());
-                    existingTutanak.setEvTipId(tutanakDetails.getEvTipId());
-                    existingTutanak.setGuncellemeTarihi(tutanakDetails.getGuncellemeTarihi());
-                    existingTutanak.setEvDurumIsim(tutanakDetails.getEvDurumIsim());
-                    existingTutanak.setYakacakTipIsim(tutanakDetails.getYakacakTipIsim());
-                    existingTutanak.setEvTipIsim(tutanakDetails.getEvTipIsim());
-                    TutanakMulkiyet updatedTutanak = tutanakMulkiyetService.save(existingTutanak);
-                    return ResponseEntity.ok(updatedTutanak);
-                })
-                .orElse(ResponseEntity.notFound().build());
+    public ResponseEntity<TutanakMulkiyet> update(@PathVariable Long id, @RequestBody TutanakMulkiyet tutanakMulkiyet) {
+        return ResponseEntity.ok(tutanakMulkiyetService.update(id, tutanakMulkiyet));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteTutanakMulkiyet(@PathVariable Integer id) {
-        if (tutanakMulkiyetService.findById(id).isPresent()) {
-            tutanakMulkiyetService.deleteById(id);
-            return ResponseEntity.noContent().build();
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        tutanakMulkiyetService.delete(id);
+        return ResponseEntity.noContent().build();
     }
 }

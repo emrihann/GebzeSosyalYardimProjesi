@@ -9,7 +9,6 @@ import com.gebzesosyalyardim.GebzeSosyalYardim.service.KisiIletisimService;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +19,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
+
+
 /**
  *
  * @author emirh
@@ -27,8 +29,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/kisi-iletisim")
 public class KisiletisimController {
+    private final KisiIletisimService kisiIletisimService;
+
     @Autowired
-    private KisiIletisimService kisiIletisimService;
+    public KisiletisimController(KisiIletisimService kisiIletisimService) {
+        this.kisiIletisimService = kisiIletisimService;
+    }
 
     @GetMapping
     public List<KisiIletisim> getAllKisiIletisim() {
@@ -36,25 +42,26 @@ public class KisiletisimController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<KisiIletisim> getKisiIletisimById(@PathVariable Integer id) {
+    public ResponseEntity<KisiIletisim> getKisiIletisimById(@PathVariable Long id) {
         Optional<KisiIletisim> kisiIletisim = kisiIletisimService.getKisiIletisimById(id);
         return kisiIletisim.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    public KisiIletisim createKisiIletisim(@RequestBody KisiIletisim kisiIletisim) {
-        return kisiIletisimService.createKisiIletisim(kisiIletisim);
+    public ResponseEntity<KisiIletisim> createKisiIletisim(@RequestBody KisiIletisim kisiIletisim) {
+        KisiIletisim createdKisiIletisim = kisiIletisimService.saveKisiIletisim(kisiIletisim);
+        return ResponseEntity.ok(createdKisiIletisim);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<KisiIletisim> updateKisiIletisim(@PathVariable Integer id, @RequestBody KisiIletisim kisiIletisim) {
+    public ResponseEntity<KisiIletisim> updateKisiIletisim(@PathVariable Long id, @RequestBody KisiIletisim kisiIletisim) {
         KisiIletisim updatedKisiIletisim = kisiIletisimService.updateKisiIletisim(id, kisiIletisim);
-        return ResponseEntity.ok(updatedKisiIletisim);
+        return updatedKisiIletisim != null ? ResponseEntity.ok(updatedKisiIletisim) : ResponseEntity.notFound().build();
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteKisiIletisim(@PathVariable Integer id) {
+    public ResponseEntity<Void> deleteKisiIletisim(@PathVariable Long id) {
         kisiIletisimService.deleteKisiIletisim(id);
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        return ResponseEntity.noContent().build();
     }
 }

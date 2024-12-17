@@ -9,11 +9,13 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
-import java.util.Date;
+import java.time.ZonedDateTime;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
 
 /**
  *
@@ -22,43 +24,36 @@ import lombok.Data;
 @Entity
 @Data
 @Table(name="TUTANAK_BORC")
+@NoArgsConstructor
+@AllArgsConstructor
 public class TutanakBorc {
+   @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "borc_seq")
+    @SequenceGenerator(name = "borc_seq", sequenceName = "GEBZEADMIN.ISEQ$$_88429", allocationSize = 1)
+    private Long borcId;
 
-    public TutanakBorc() {
-    }
+    @Column(name = "ELEKTRIK")
+    private Double elektrik = 0.0;
 
-    public TutanakBorc(Integer borcId, Date guncellemeTarihi) {
-        this.borcId = borcId;
-        this.guncellemeTarihi = guncellemeTarihi;
-    }
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "BORC_ID")
-    private Integer borcId;
+    @Column(name = "SU")
+    private Double su = 0.0;
 
-    @Column(name = "ELEKTRIK", columnDefinition = "float default 0")
-    private float elektrik = 0;
+    @Column(name = "DOGALGAZ")
+    private Double dogalgaz = 0.0;
 
-    @Column(name = "SU", columnDefinition = "float default 0")
-    private float su = 0;
+    @Column(name = "KIRA")
+    private Double kira = 0.0;
 
-    @Column(name = "DOGALGAZ", columnDefinition = "float default 0")
-    private float dogalgaz = 0;
+    @Column(name = "KREDI_KARTI")
+    private Double krediKarti = 0.0;
 
-    @Column(name = "KIRA", columnDefinition = "float default 0")
-    private float kira = 0;
+    @Column(name = "DIGER")
+    private Double diger = 0.0;
 
-    @Column(name = "KREDI_KARTI", columnDefinition = "float default 0")
-    private float krediKarti = 0;
+    @Column(name = "DIGER_ACIKLAMA")
+    private String digerAciklama;
 
-    @Column(name = "DIGER", columnDefinition = "float default 0")
-    private float diger = 0;
-
-    @Column(name = "DIGER_ACIKLAMA", length = 255)
-    private String digerAciklama = "";
-
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "GUNCELLEME_TARIHI")
-    private Date guncellemeTarihi;
+    private ZonedDateTime guncellemeTarihi;
+    }
 
-}

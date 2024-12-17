@@ -17,8 +17,12 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class KisiEngelServiceImpl implements KisiEngelService {
-     @Autowired
-    private KisiEngelRepository kisiEngelRepository;
+     private final KisiEngelRepository kisiEngelRepository;
+
+    @Autowired
+    public KisiEngelServiceImpl(KisiEngelRepository kisiEngelRepository) {
+        this.kisiEngelRepository = kisiEngelRepository;
+    }
 
     @Override
     public List<KisiEngel> getAllKisiEngel() {
@@ -26,23 +30,26 @@ public class KisiEngelServiceImpl implements KisiEngelService {
     }
 
     @Override
-    public Optional<KisiEngel> getKisiEngelById(Integer id) {
+    public Optional<KisiEngel> getKisiEngelById(Long id) {
         return kisiEngelRepository.findById(id);
     }
 
     @Override
-    public KisiEngel createKisiEngel(KisiEngel kisiEngel) {
+    public KisiEngel saveKisiEngel(KisiEngel kisiEngel) {
         return kisiEngelRepository.save(kisiEngel);
     }
 
     @Override
-    public KisiEngel updateKisiEngel(Integer id, KisiEngel kisiEngel) {
-        kisiEngel.setKisi_engel_id(id);
-        return kisiEngelRepository.save(kisiEngel);
+    public KisiEngel updateKisiEngel(Long id, KisiEngel kisiEngel) {
+        if (kisiEngelRepository.existsById(id)) {
+            kisiEngel.setKisiEngelId(id);
+            return kisiEngelRepository.save(kisiEngel);
+        }
+        return null; // ID bulunmazsa null döndürülür.
     }
 
     @Override
-    public void deleteKisiEngel(Integer id) {
+    public void deleteKisiEngel(Long id) {
         kisiEngelRepository.deleteById(id);
-    } 
+    }
 }

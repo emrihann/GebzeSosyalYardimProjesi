@@ -9,6 +9,8 @@ import com.gebzesosyalyardim.GebzeSosyalYardim.service.MuracaatBilgiService;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,31 +27,34 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/muracaatbilgi")
 public class MuracaatBilgiController {
+    private final MuracaatBilgiService muracaatBilgiService;
+
     @Autowired
-    private MuracaatBilgiService muracaatBilgiService;
+    public MuracaatBilgiController(MuracaatBilgiService muracaatBilgiService) {
+        this.muracaatBilgiService = muracaatBilgiService;
+    }
+
+    @PostMapping
+    public ResponseEntity<MuracaatBilgi> createMuracaatBilgi(@RequestBody MuracaatBilgi muracaatBilgi) {
+        MuracaatBilgi savedMuracaatBilgi = muracaatBilgiService.saveMuracaatBilgi(muracaatBilgi);
+        return new ResponseEntity<>(savedMuracaatBilgi, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<MuracaatBilgi> getMuracaatBilgi(@PathVariable Long id) {
+        Optional<MuracaatBilgi> muracaatBilgi = muracaatBilgiService.getMuracaatBilgiById(id);
+        return muracaatBilgi.map(ResponseEntity::ok)
+                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
 
     @GetMapping
     public List<MuracaatBilgi> getAllMuracaatBilgi() {
         return muracaatBilgiService.getAllMuracaatBilgi();
     }
 
-    @GetMapping("/{id}")
-    public Optional<MuracaatBilgi> getMuracaatBilgiById(@PathVariable Integer id) {
-        return muracaatBilgiService.getMuracaatBilgiById(id);
-    }
-
-    @PostMapping
-    public MuracaatBilgi createMuracaatBilgi(@RequestBody MuracaatBilgi muracaatBilgi) {
-        return muracaatBilgiService.createMuracaatBilgi(muracaatBilgi);
-    }
-
-    @PutMapping("/{id}")
-    public MuracaatBilgi updateMuracaatBilgi(@PathVariable Integer id, @RequestBody MuracaatBilgi muracaatBilgi) {
-        return muracaatBilgiService.updateMuracaatBilgi(id, muracaatBilgi);
-    }
-
     @DeleteMapping("/{id}")
-    public void deleteMuracaatBilgi(@PathVariable Integer id) {
+    public ResponseEntity<Void> deleteMuracaatBilgi(@PathVariable Long id) {
         muracaatBilgiService.deleteMuracaatBilgi(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
