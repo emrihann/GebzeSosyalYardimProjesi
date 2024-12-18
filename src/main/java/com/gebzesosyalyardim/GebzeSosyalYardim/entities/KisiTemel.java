@@ -32,16 +32,16 @@ public class KisiTemel {
     @Column(name = "KISI_ID")
     private Long kisiId;
 
-    @Column(name = "KIMLIK_NO", nullable = false)
+    @Column(name = "KIMLIK_NO")
     private Long kimlikNo;
 
-    @Column(name = "ISIM", nullable = false, length = 20)
+    @Column(name = "ISIM")
     private String isim;
 
-    @Column(name = "SOYISIM", nullable = false, length = 20)
+    @Column(name = "SOYISIM")
     private String soyisim;
 
-    @Column(name = "CINSIYET", nullable = false, length = 1)
+    @Column(name = "CINSIYET")
     private String cinsiyet;
 
     @Column(name = "CILT_NO")
@@ -53,16 +53,16 @@ public class KisiTemel {
     @Column(name = "SIRA_NO")
     private Long siraNo;
 
-    @Column(name = "DOGUM_TARIHI", nullable = false)
+    @Column(name = "DOGUM_TARIHI")
     private LocalDateTime dogumTarihi;
 
     @Column(name = "MEDENI_DURUM_ID")
     private Long medeniDurumId;
 
-    @Column(name = "KAYIT_TARIHI", nullable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @Column(name = "KAYIT_TARIHI")
     private LocalDateTime kayitTarihi;
 
-    @Column(name = "AKTIF", nullable = false)
+    @Column(name = "AKTIF")
     private Long aktif;
 
     @Column(name = "GUNCELLEME_TARIHI")
