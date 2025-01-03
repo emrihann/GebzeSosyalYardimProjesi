@@ -9,10 +9,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import java.time.LocalDate;
-import java.time.ZonedDateTime;
+import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -28,8 +27,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class KisiAskerlik {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "askerlik_seq")
-    @SequenceGenerator(name = "askerlik_seq", sequenceName = "GEBZEADMIN.ISEQ$$_88373", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ASKERLIK_ID")
     private Long askerlikId;
 
     @Column(name = "ASKER_HUKUMLU", nullable = false)
@@ -39,7 +38,7 @@ public class KisiAskerlik {
     private Integer sure;
 
     @Column(name = "ACIKLAMA", nullable = false, length = 1000)
-    private String aciklama = "";
+    private String aciklama;
 
     @Column(name = "BASLANGIC_TARIHI", nullable = false)
     private LocalDate baslangicTarihi;
@@ -48,13 +47,13 @@ public class KisiAskerlik {
     private LocalDate bitisTarihi;
 
     @Column(name = "AKTIF", nullable = false)
-    private Integer aktif = 1;
+    private Integer aktif;
 
-    @Column(name = "KAYIT_TARIHI", nullable = false)
-    private ZonedDateTime kayitTarihi;
+    @Column(name = "KAYIT_TARIHI", nullable = false, updatable = false)
+    private LocalDateTime kayitTarihi;
 
     @Column(name = "GUNCELLEME_TARIHI")
-    private ZonedDateTime guncellemeTarihi;
+    private LocalDateTime guncellemeTarihi;
 
     @Column(name = "DIGER")
     private Float diger;

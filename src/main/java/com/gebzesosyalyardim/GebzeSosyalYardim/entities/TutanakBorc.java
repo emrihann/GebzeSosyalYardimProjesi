@@ -4,56 +4,46 @@
  */
 package com.gebzesosyalyardim.GebzeSosyalYardim.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.SequenceGenerator;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import lombok.*;
+import java.math.BigDecimal;
 import java.time.ZonedDateTime;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
-
-/**
- *
- * @author emirh
- */
 @Entity
 @Data
-@Table(name="TUTANAK_BORC")
+@Table(name = "TUTANAK_BORC")
 @NoArgsConstructor
 @AllArgsConstructor
 public class TutanakBorc {
-   @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "borc_seq")
-    @SequenceGenerator(name = "borc_seq", sequenceName = "GEBZEADMIN.ISEQ$$_88429", allocationSize = 1)
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "BORC_ID")
     private Long borcId;
 
-    @Column(name = "ELEKTRIK")
-    private Double elektrik = 0.0;
+    @Column(name = "ELEKTRIK", nullable = false)
+    private BigDecimal elektrik;
 
-    @Column(name = "SU")
-    private Double su = 0.0;
+    @Column(name = "SU", nullable = false)
+    private BigDecimal su;
 
-    @Column(name = "DOGALGAZ")
-    private Double dogalgaz = 0.0;
+    @Column(name = "DOGALGAZ", nullable = false)
+    private BigDecimal dogalgaz;
 
-    @Column(name = "KIRA")
-    private Double kira = 0.0;
+    @Column(name = "KIRA", nullable = false)
+    private BigDecimal kira;
 
-    @Column(name = "KREDI_KARTI")
-    private Double krediKarti = 0.0;
+    @Column(name = "KREDI_KARTI", nullable = false)
+    private BigDecimal krediKarti;
 
-    @Column(name = "DIGER")
-    private Double diger = 0.0;
+    @Column(name = "DIGER", nullable = false)
+    private BigDecimal diger;
 
-    @Column(name = "DIGER_ACIKLAMA")
+    @Column(name = "DIGER_ACIKLAMA", length = 255)
     private String digerAciklama;
 
     @Column(name = "GUNCELLEME_TARIHI")
     private ZonedDateTime guncellemeTarihi;
-    }
+}
+
 

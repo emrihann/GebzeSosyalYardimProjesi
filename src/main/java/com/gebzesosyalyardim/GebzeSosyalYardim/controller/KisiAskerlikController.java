@@ -30,28 +30,38 @@ public class KisiAskerlikController {
     private KisiAskerlikService kisiAskerlikService;
 
     @GetMapping
-    public ResponseEntity<List<KisiAskerlik>> getAll() {
-        return ResponseEntity.ok(kisiAskerlikService.getAll());
+    public List<KisiAskerlik> getAllKisiAskerlik() {
+        return kisiAskerlikService.findAll();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<KisiAskerlik> getById(@PathVariable Long id) {
-        return ResponseEntity.ok(kisiAskerlikService.getById(id));
+    public ResponseEntity<KisiAskerlik> getKisiAskerlikById(@PathVariable Long id) {
+        return kisiAskerlikService.findById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    public ResponseEntity<KisiAskerlik> create(@RequestBody KisiAskerlik kisiAskerlik) {
-        return ResponseEntity.ok(kisiAskerlikService.save(kisiAskerlik));
+    public KisiAskerlik createKisiAskerlik(@RequestBody KisiAskerlik kisiAskerlik) {
+        return kisiAskerlikService.save(kisiAskerlik);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<KisiAskerlik> update(@PathVariable Long id, @RequestBody KisiAskerlik kisiAskerlik) {
-        return ResponseEntity.ok(kisiAskerlikService.update(id, kisiAskerlik));
+    public ResponseEntity<KisiAskerlik> updateKisiAskerlik(@PathVariable Long id, @RequestBody KisiAskerlik kisiAskerlik) {
+        return kisiAskerlikService.findById(id)
+                .map(existing -> {
+                    kisiAskerlik.setAskerlikId(existing.getAskerlikId());
+                    return ResponseEntity.ok(kisiAskerlikService.save(kisiAskerlik));
+                })
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long id) {
-        kisiAskerlikService.delete(id);
-        return ResponseEntity.noContent().build();
+    public ResponseEntity<Void> deleteKisiAskerlik(@PathVariable Long id) {
+        if (kisiAskerlikService.findById(id).isPresent()) {
+            kisiAskerlikService.deleteById(id);
+            return ResponseEntity.ok().build();
+        }
+        return ResponseEntity.notFound().build();
     }
 }

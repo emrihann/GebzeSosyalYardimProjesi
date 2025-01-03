@@ -52,7 +52,6 @@ com\gebzesosyalyardim\GebzeSosyalYardim\controller\MuracaatController.class
 com\gebzesosyalyardim\GebzeSosyalYardim\repository\KisiDetayRepository.class
 com\gebzesosyalyardim\GebzeSosyalYardim\entities\MuracaatBilgi.class
 com\gebzesosyalyardim\GebzeSosyalYardim\controller\TutanakEvEsyalariController.class
-com\gebzesosyalyardim\GebzeSosyalYardim\config\WebConfig$1.class
 com\gebzesosyalyardim\GebzeSosyalYardim\controller\TutanakSosyalGuvenceController.class
 com\gebzesosyalyardim\GebzeSosyalYardim\repository\KurumRepository.class
 com\gebzesosyalyardim\GebzeSosyalYardim\service\KisiEngelServiceImpl.class
@@ -101,13 +100,11 @@ com\gebzesosyalyardim\GebzeSosyalYardim\repository\YardimStatuRepository.class
 com\gebzesosyalyardim\GebzeSosyalYardim\service\KisiIletisimService.class
 com\gebzesosyalyardim\GebzeSosyalYardim\repository\TutanakDurumRepository.class
 com\gebzesosyalyardim\GebzeSosyalYardim\repository\TutanakEvDurumRepository.class
-com\gebzesosyalyardim\GebzeSosyalYardim\config\WebConfig.class
 com\gebzesosyalyardim\GebzeSosyalYardim\controller\KisiEgitimDurumController.class
 com\gebzesosyalyardim\GebzeSosyalYardim\service\TutanakDurumService.class
 com\gebzesosyalyardim\GebzeSosyalYardim\controller\KisiTemelController.class
 com\gebzesosyalyardim\GebzeSosyalYardim\repository\GuvenceBirimRepository.class
 com\gebzesosyalyardim\GebzeSosyalYardim\config\ModelMapperConfig.class
-com\gebzesosyalyardim\GebzeSosyalYardim\controller\TestController\MyController.class
 com\gebzesosyalyardim\GebzeSosyalYardim\entities\GuvenceBirim.class
 com\gebzesosyalyardim\GebzeSosyalYardim\repository\KisiHastalikRepository.class
 com\gebzesosyalyardim\GebzeSosyalYardim\repository\TutanakMulkiyetRepository.class
@@ -124,7 +121,6 @@ com\gebzesosyalyardim\GebzeSosyalYardim\controller\GuvenceBirimController.class
 com\gebzesosyalyardim\GebzeSosyalYardim\service\KisiYakinlarStatuServiceImpl.class
 com\gebzesosyalyardim\GebzeSosyalYardim\entities\MuracaatDurum.class
 com\gebzesosyalyardim\GebzeSosyalYardim\repository\KisiTemelRepository.class
-com\gebzesosyalyardim\GebzeSosyalYardim\config\SecurityConfig.class
 com\gebzesosyalyardim\GebzeSosyalYardim\controller\KisiAskerlikController.class
 com\gebzesosyalyardim\GebzeSosyalYardim\service\EngelliTipServiceImpl.class
 com\gebzesosyalyardim\GebzeSosyalYardim\service\KisiDetayService.class

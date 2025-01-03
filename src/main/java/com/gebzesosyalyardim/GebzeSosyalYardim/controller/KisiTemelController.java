@@ -6,10 +6,12 @@ package com.gebzesosyalyardim.GebzeSosyalYardim.controller;
 
 import com.gebzesosyalyardim.GebzeSosyalYardim.entities.KisiTemel;
 import com.gebzesosyalyardim.GebzeSosyalYardim.service.KisiTemelService;
+import jakarta.validation.Valid;
 import java.util.List;
-import java.util.Optional;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,41 +25,61 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author emirh
  */
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/api/kisiTemel")
 public class KisiTemelController {
-     private final KisiTemelService kisiTemelService;
+   private final KisiTemelService kisiTemelService;
 
-    @Autowired
     public KisiTemelController(KisiTemelService kisiTemelService) {
         this.kisiTemelService = kisiTemelService;
     }
 
-    @GetMapping
-    public List<KisiTemel> getAllKisiTemel() {
-        return kisiTemelService.getAllKisiTemel();
+    @PostMapping("/create")
+    public ResponseEntity<KisiTemel> createKisi(@Valid @RequestBody KisiTemel kisiTemel) {
+        try {
+            KisiTemel savedKisi = kisiTemelService.saveKisiTemel(kisiTemel);
+            return new ResponseEntity<>(savedKisi, HttpStatus.CREATED);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                                 .body(null);
+        }
     }
 
-    @GetMapping("/{kisiId}")
-    public ResponseEntity<KisiTemel> getKisiTemelById(@PathVariable Long kisiId) {
-        Optional<KisiTemel> kisiTemel = kisiTemelService.getKisiTemelById(kisiId);
-        return kisiTemel.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    @GetMapping("/all")
+    public ResponseEntity<List<KisiTemel>> getAllKisiler() {
+        List<KisiTemel> kisiler = kisiTemelService.getAllKisiler();
+        if (kisiler.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(kisiler);
     }
 
-    @PostMapping
-    public KisiTemel createKisiTemel(@RequestBody KisiTemel kisiTemel) {
-        return kisiTemelService.saveKisiTemel(kisiTemel);
+    @GetMapping("/{id}")
+    public ResponseEntity<KisiTemel> getKisiById(@PathVariable Long id) {
+        return kisiTemelService.getKisiById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
 
-    @PutMapping("/{kisiId}")
-    public ResponseEntity<KisiTemel> updateKisiTemel(@PathVariable Long kisiId, @RequestBody KisiTemel kisiTemel) {
-        KisiTemel updatedKisiTemel = kisiTemelService.updateKisiTemel(kisiId, kisiTemel);
-        return updatedKisiTemel != null ? ResponseEntity.ok(updatedKisiTemel) : ResponseEntity.notFound().build();
+    @PutMapping("/update/{id}")
+    public ResponseEntity<KisiTemel> updateKisi(@PathVariable Long id, @Valid @RequestBody KisiTemel kisiTemel) {
+        try {
+            KisiTemel updatedKisi = kisiTemelService.updateKisiTemel(id, kisiTemel);
+            return ResponseEntity.ok(updatedKisi);
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                                 .body(null);
+        }
     }
 
-    @DeleteMapping("/{kisiId}")
-    public ResponseEntity<Void> deleteKisiTemel(@PathVariable Long kisiId) {
-        kisiTemelService.deleteKisiTemel(kisiId);
-        return ResponseEntity.noContent().build();
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Void> deleteKisi(@PathVariable Long id) {
+        try {
+            kisiTemelService.deleteKisiById(id);
+            return ResponseEntity.noContent().build();
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
     }
 }

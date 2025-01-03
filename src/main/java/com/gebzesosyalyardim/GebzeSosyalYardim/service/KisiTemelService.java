@@ -13,9 +13,9 @@ import java.util.Optional;
  * @author emirh
  */
 public interface KisiTemelService {
-    List<KisiTemel> getAllKisiTemel();
-    Optional<KisiTemel> getKisiTemelById(Long kisiId);
     KisiTemel saveKisiTemel(KisiTemel kisiTemel);
-    KisiTemel updateKisiTemel(Long kisiId, KisiTemel kisiTemel);
-    void deleteKisiTemel(Long kisiId);
+    List<KisiTemel> getAllKisiler();
+    Optional<KisiTemel> getKisiById(Long id);
+    KisiTemel updateKisiTemel(Long id, KisiTemel kisiTemel);
+    void deleteKisiById(Long id);
 }

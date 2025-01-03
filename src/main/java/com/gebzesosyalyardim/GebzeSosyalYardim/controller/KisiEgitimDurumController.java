@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author emirh
  */
 @RestController
-@RequestMapping("/kisi-egitim-durum")
+@RequestMapping("/api/kisi-egitim-durum")
 public class KisiEgitimDurumController {
      private final KisiEgitimDurumService kisiEgitimDurumService;
 

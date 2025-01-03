@@ -5,9 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
-import java.time.ZonedDateTime;
+import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,63 +20,63 @@ import lombok.NoArgsConstructor;
 public class TutanakGelir {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "gelir_seq")
-    @SequenceGenerator(name = "gelir_seq", sequenceName = "GEBZEADMIN.ISEQ$$_88443", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "GELIR_ID")
     private Long gelirId;
 
     @Column(name = "YASLILIK", nullable = false)
-    private Double yaslilik = 0.0;
+    private Float yaslilik;
 
     @Column(name = "ENGELLI", nullable = false)
-    private Double engelli = 0.0;
+    private Float engelli;
 
     @Column(name = "ENGELLI_YAKINI", nullable = false)
-    private Double engelliYakini = 0.0;
+    private Float engelliYakini;
 
     @Column(name = "YETIM_AYLIGI", nullable = false)
-    private Double yetimAyligi = 0.0;
+    private Float yetimAyligi;
 
     @Column(name = "EMEKLI_MAASI", nullable = false)
-    private Double emekliMaasi = 0.0;
+    private Float emekliMaasi;
 
     @Column(name = "EVDE_BAKIM_PARASI", nullable = false)
-    private Double evdeBakimParasi = 0.0;
+    private Float evdeBakimParasi;
 
     @Column(name = "DUL_MAASI", nullable = false)
-    private Double dulMaasi = 0.0;
+    private Float dulMaasi;
 
     @Column(name = "ISSIZLIK_MAASI", nullable = false)
-    private Double issizlikMaasi = 0.0;
+    private Float issizlikMaasi;
 
     @Column(name = "ASKER_MAASI", nullable = false)
-    private Double askerMaasi = 0.0;
+    private Float askerMaasi;
 
     @Column(name = "KIRA_MAASI", nullable = false)
-    private Double kiraMaasi = 0.0;
+    private Float kiraMaasi;
 
     @Column(name = "KAYMAKAMLIK", nullable = false)
-    private Double kaymakamlik = 0.0;
+    private Float kaymakamlik;
 
     @Column(name = "SOSYAL_HIZMETLER", nullable = false)
-    private Double sosyalHizmetler = 0.0;
+    private Float sosyalHizmetler;
 
     @Column(name = "BUYUKSEHIR", nullable = false)
-    private Double buyuksehir = 0.0;
+    private Float buyuksehir;
 
     @Column(name = "OZEL_VAKIF", nullable = false)
-    private Double ozelVakif = 0.0;
+    private Float ozelVakif;
 
     @Column(name = "DIGER", nullable = false)
-    private Double diger = 0.0;
+    private Float diger;
 
     @Column(name = "AKTIF", nullable = false)
-    private Integer aktif = 1;
+    private Integer aktif;
 
-    @Column(name = "KAYIT_TARIHI", nullable = false)
-    private ZonedDateTime kayitTarihi;
+    @Column(name = "KAYIT_TARIHI", nullable = false, updatable = false)
+    private LocalDateTime kayitTarihi;
 
     @Column(name = "GUNCELLEME_TARIHI")
-    private ZonedDateTime guncellemeTarihi;
+    private LocalDateTime guncellemeTarihi;
 
     @Column(name = "DIGER_ACIKLAMA", length = 1000)
     private String digerAciklama;

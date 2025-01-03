@@ -6,6 +6,7 @@ package com.gebzesosyalyardim.GebzeSosyalYardim.service;
 
 import com.gebzesosyalyardim.GebzeSosyalYardim.entities.KisiAskerlik;
 import java.util.List;
+import java.util.Optional;
 
 
 /**
@@ -13,9 +14,8 @@ import java.util.List;
  * @author emirh
  */
 public interface KisiAskerlikService {
-    List<KisiAskerlik> getAll();
-    KisiAskerlik getById(Long id);
+    List<KisiAskerlik> findAll();
+    Optional<KisiAskerlik> findById(Long id);
     KisiAskerlik save(KisiAskerlik kisiAskerlik);
-    KisiAskerlik update(Long id, KisiAskerlik kisiAskerlik);
-    void delete(Long id);
+    void deleteById(Long id);
 }

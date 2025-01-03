@@ -22,7 +22,6 @@ C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main
 C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\entities\YardimAlt.java
 C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\controller\TutanakEvTipController.java
 C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\repository\YardimTurRepository.java
-C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\config\SecurityConfig.java
 C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\entities\KisiAskerlik.java
 C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\entities\TutanakYakacak.java
 C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\service\TutanakMulkiyetServiceImpl.java
@@ -84,7 +83,6 @@ C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main
 C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\repository\YardimStatuRepository.java
 C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\service\GuvenceBirimServiceImpl.java
 C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\controller\MuracaatBilgiController.java
-C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\controller\TestController\WebController.java
 C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\entities\TutanakGelir.java
 C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\controller\KisiEgitimDurumController.java
 C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\controller\YardimAltController.java
@@ -98,7 +96,6 @@ C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main
 C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\entities\KisiTemel.java
 C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\service\HastalikService.java
 C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\service\YardimStatuServiceImpl.java
-C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\controller\TestController\MyController.java
 C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\controller\YardimTurController.java
 C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\service\TutanakYakacakService.java
 C:\Users\emirh\Documents\campspring\GebzeSosyalYardim\GebzeSosyalYardim\src\main\java\com\gebzesosyalyardim\GebzeSosyalYardim\entities\KisiDetay.java

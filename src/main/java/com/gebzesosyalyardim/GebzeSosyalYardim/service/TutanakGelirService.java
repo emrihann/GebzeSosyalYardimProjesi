@@ -6,6 +6,7 @@ package com.gebzesosyalyardim.GebzeSosyalYardim.service;
 
 import com.gebzesosyalyardim.GebzeSosyalYardim.entities.TutanakGelir;
 import java.util.List;
+import java.util.Optional;
 
 
 /**
@@ -13,9 +14,8 @@ import java.util.List;
  * @author emirh
  */
 public interface TutanakGelirService {
-    List<TutanakGelir> getAll();
-    TutanakGelir getById(Long id);
+    List<TutanakGelir> findAll();
+    Optional<TutanakGelir> findById(Long id);
     TutanakGelir save(TutanakGelir tutanakGelir);
-    TutanakGelir update(Long id, TutanakGelir tutanakGelir);
-    void delete(Long id);
+    void deleteById(Long id);
 }

@@ -23,34 +23,44 @@ import org.springframework.web.bind.annotation.RestController;
  * @author emirh
  */
 @RestController
-@RequestMapping("/api/ tutanakgelir")
+@RequestMapping("/api/tutanakGelir")
 public class TutanakGelirController {
     @Autowired
     private TutanakGelirService tutanakGelirService;
 
     @GetMapping
-    public ResponseEntity<List<TutanakGelir>> getAll() {
-        return ResponseEntity.ok(tutanakGelirService.getAll());
+    public List<TutanakGelir> getAllTutanakGelir() {
+        return tutanakGelirService.findAll();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<TutanakGelir> getById(@PathVariable Long id) {
-        return ResponseEntity.ok(tutanakGelirService.getById(id));
+    public ResponseEntity<TutanakGelir> getTutanakGelirById(@PathVariable Long id) {
+        return tutanakGelirService.findById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    public ResponseEntity<TutanakGelir> create(@RequestBody TutanakGelir tutanakGelir) {
-        return ResponseEntity.ok(tutanakGelirService.save(tutanakGelir));
+    public TutanakGelir createTutanakGelir(@RequestBody TutanakGelir tutanakGelir) {
+        return tutanakGelirService.save(tutanakGelir);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<TutanakGelir> update(@PathVariable Long id, @RequestBody TutanakGelir tutanakGelir) {
-        return ResponseEntity.ok(tutanakGelirService.update(id, tutanakGelir));
+    public ResponseEntity<TutanakGelir> updateTutanakGelir(@PathVariable Long id, @RequestBody TutanakGelir tutanakGelir) {
+        return tutanakGelirService.findById(id)
+                .map(existing -> {
+                    tutanakGelir.setGelirId(existing.getGelirId());
+                    return ResponseEntity.ok(tutanakGelirService.save(tutanakGelir));
+                })
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long id) {
-        tutanakGelirService.delete(id);
-        return ResponseEntity.noContent().build();
+    public ResponseEntity<Void> deleteTutanakGelir(@PathVariable Long id) {
+        if (tutanakGelirService.findById(id).isPresent()) {
+            tutanakGelirService.deleteById(id);
+            return ResponseEntity.ok().build();
+        }
+        return ResponseEntity.notFound().build();
     }
 }
